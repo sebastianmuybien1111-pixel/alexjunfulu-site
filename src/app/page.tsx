@@ -1,65 +1,267 @@
-import Image from "next/image";
-
+import BlurText from "@/components/BlurText";
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="relative min-h-screen overflow-hidden bg-[#0B0B0F] text-[#F5F5F5]">
+      {/* Background Glow */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/2 top-[-10rem] h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-[#8FA7BF]/10 blur-[120px]" />
+        <div className="absolute bottom-[-10rem] right-[-5rem] h-[30rem] w-[30rem] rounded-full bg-[#C2A878]/10 blur-[120px]" />
+      </div>
+
+      {/* Navbar */}
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#0B0B0F]/70 backdrop-blur-xl">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+          <a href="#home" className="font-display text-2xl font-semibold tracking-[-0.03em]">
+            Alex Junfu Lu
+          </a>
+
+          <div className="hidden items-center gap-8 text-sm text-zinc-400 md:flex">
+            <a href="#about" className="transition hover:text-[#F5F5F5]">
+              About
+            </a>
+            <a href="#research" className="transition hover:text-[#F5F5F5]">
+              Research
+            </a>
+            <a href="#projects" className="transition hover:text-[#F5F5F5]">
+              Projects
+            </a>
+            <a href="#contact" className="transition hover:text-[#F5F5F5]">
+              Contact
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section
+        id="home"
+        className="flex min-h-screen flex-col items-center justify-center px-6 pt-24 text-center"
+      >
+        <p className="mb-6 text-sm uppercase tracking-[0.3em] text-[#8FA7BF]">
+          International Relations · Global Governance · Geopolitics
+        </p>
+
+        <BlurText
+  text="Alex Junfu Lu"
+  delay={120}
+  animateBy="words"
+  direction="top"
+  className="font-display max-w-5xl justify-center text-7xl font-semibold leading-none tracking-[-0.04em] md:text-9xl"
+/>
+
+        <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-400 md:text-xl">
+          Undergraduate researcher in International Relations, focusing on
+          institutional power, Indo-Pacific geopolitics, climate governance, and
+          international political economy.
+        </p>
+
+        <div className="mt-12 flex gap-6">
+          <a
+            href="#research"
+            className="rounded-full border border-zinc-700 px-8 py-3 transition hover:border-[#8FA7BF] hover:text-[#8FA7BF]"
+          >
+            View Research
+          </a>
+
+          <a
+            href="#contact"
+            className="rounded-full bg-[#F5F5F5] px-8 py-3 text-black transition hover:opacity-80"
+          >
+            Contact
+          </a>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="mx-auto max-w-6xl px-6 py-32">
+        <div className="grid gap-16 md:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#C2A878]">
+              About
+            </p>
+
+            <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] md:text-6xl">
+              A research-oriented student of world politics.
+            </h2>
+          </div>
+
+          <div className="space-y-8 text-lg leading-8 text-zinc-400">
+            <p>
+              Alex Junfu Lu is an undergraduate student in International
+              Relations at Xi’an Jiaotong-Liverpool University. His academic
+              interests lie in global governance, international political
+              economy, Indo-Pacific security, and the role of institutions in
+              shaping power relations.
+            </p>
+
+            <p>
+              His current work examines how states, international organizations,
+              and institutional procedures respond to strategic uncertainty,
+              geopolitical rivalry, and unequal responsibility in global
+              governance.
+            </p>
+
+            <div className="grid gap-4 pt-6 md:grid-cols-3">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-sm uppercase tracking-[0.2em] text-[#8FA7BF]">
+                  Education
+                </p>
+                <p className="mt-3 text-sm leading-6 text-zinc-400">
+                  Xi’an Jiaotong-Liverpool University
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-sm uppercase tracking-[0.2em] text-[#8FA7BF]">
+                  Field
+                </p>
+                <p className="mt-3 text-sm leading-6 text-zinc-400">
+                  International Relations
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-sm uppercase tracking-[0.2em] text-[#8FA7BF]">
+                  Practice
+                </p>
+                <p className="mt-3 text-sm leading-6 text-zinc-400">
+                  Research · MUN · Conference Design
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Research Focus */}
+<section id="research" className="mx-auto max-w-6xl px-6 py-32">
+  <div className="mb-20">
+    <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#8FA7BF]">
+      Research Focus
+    </p>
+
+    <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] md:text-6xl">
+      Current Areas of Interest
+    </h2>
+  </div>
+
+  <div className="grid gap-8 md:grid-cols-2">
+    {[
+      {
+        title: "Indo-Pacific Strategy and Hedging",
+        description:
+          "Researching middle-power diplomacy, strategic ambiguity, ASEAN centrality, and geopolitical competition in the Indo-Pacific.",
+        href: "/research/indonesia-hedging",
+      },
+      {
+        title: "Climate Governance and Institutional Inequality",
+        description:
+          "Exploring climate finance, institutional fragmentation, and the unequal distribution of responsibilities in global governance.",
+        href: "#",
+      },
+      {
+        title: "International Organizations",
+        description:
+          "Analyzing institutional procedure, consensus-building, and governance mechanisms within international organizations.",
+        href: "#",
+      },
+      {
+        title: "Global Political Economy",
+        description:
+          "Examining trade, protectionism, strategic supply chains, and the political consequences of economic interdependence.",
+        href: "#",
+      },
+    ].map((item) => (
+      <a
+        key={item.title}
+        href={item.href}
+        className="group rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:-translate-y-1 hover:border-[#8FA7BF]/40 hover:bg-white/[0.07]"
+      >
+        <h3 className="font-display mb-4 text-3xl font-medium tracking-[-0.02em]">
+          {item.title}
+        </h3>
+
+        <p className="leading-7 text-zinc-400">{item.description}</p>
+
+        <p className="mt-8 text-sm uppercase tracking-[0.2em] text-[#8FA7BF] opacity-70 transition group-hover:opacity-100">
+          Read more →
+        </p>
+      </a>
+    ))}
+  </div>
+</section>
+
+      {/* Projects */}
+<section id="projects" className="mx-auto max-w-6xl px-6 py-32">
+  <div className="mb-20">
+    <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#C2A878]">
+      Academic Projects
+    </p>
+
+    <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] md:text-6xl">
+      Institutional and Conference Work
+    </h2>
+
+    <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
+      Selected academic and institutional projects combining research,
+      procedural design, and conference leadership.
+    </p>
+  </div>
+
+  <div className="space-y-6">
+    {[
+      {
+        year: "2026",
+        role: "Academic Director",
+        type: "Conference Design",
+        title: "Suzhou International Model United Nations",
+        description:
+          "Led academic planning, committee coordination, and standards design for an international Model United Nations conference hosted at Xi’an Jiaotong-Liverpool University.",
+      },
+      {
+        year: "2026",
+        role: "Rules Designer",
+        type: "Institutional Simulation",
+        title: "WHO Executive Board Special Session Simulation",
+        description:
+          "Designed a motion-driven Rules of Procedure system to replace the traditional General Speakers List and encourage consensus-oriented institutional negotiation.",
+      },
+      {
+        year: "2026",
+        role: "Research Lead",
+        type: "Committee Framework",
+        title: "UNODC Committee Background Guide",
+        description:
+          "Developed a structured research framework for transnational crime governance, integrating committee design, glossary architecture, and policy-oriented background analysis.",
+      },
+    ].map((project) => (
+      <article
+        key={project.title}
+        className="grid gap-8 rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:border-[#C2A878]/40 hover:bg-white/[0.07] md:grid-cols-[0.25fr_1fr]"
+      >
+        <div className="space-y-4 text-sm uppercase tracking-[0.18em] text-zinc-500">
+          <p>{project.year}</p>
+          <p className="text-[#C2A878]">{project.role}</p>
+          <p>{project.type}</p>
+        </div>
+
+        <div>
+          <h3 className="font-display mb-4 text-4xl font-medium tracking-[-0.03em]">
+            {project.title}
+          </h3>
+
+          <p className="max-w-3xl leading-7 text-zinc-400">
+            {project.description}
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+      <footer className="border-t border-white/10 py-10 text-center text-sm text-zinc-500">
+        © 2026 Alex Junfu Lu. All rights reserved.
+      </footer>
+    </main>
   );
 }

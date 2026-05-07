@@ -16,19 +16,26 @@ export default function Home() {
           </a>
 
           <div className="hidden items-center gap-8 text-sm text-zinc-400 md:flex">
-            <a href="#about" className="transition hover:text-[#F5F5F5]">
-              About
-            </a>
-            <a href="#research" className="transition hover:text-[#F5F5F5]">
-              Research
-            </a>
-            <a href="#projects" className="transition hover:text-[#F5F5F5]">
-              Projects
-            </a>
-            <a href="#contact" className="transition hover:text-[#F5F5F5]">
-              Contact
-            </a>
-          </div>
+  <a href="#about" className="transition hover:text-[#F5F5F5]">
+    About
+  </a>
+
+  <a href="#research" className="transition hover:text-[#F5F5F5]">
+    Research
+  </a>
+
+  <a href="#projects" className="transition hover:text-[#F5F5F5]">
+    Projects
+  </a>
+
+  <a href="/cv" className="transition hover:text-[#F5F5F5]">
+    CV
+  </a>
+
+  <a href="#contact" className="transition hover:text-[#F5F5F5]">
+    Contact
+  </a>
+</div>
         </nav>
       </header>
 

@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond, Geist } from "next/font/google";
-import "./globals.css";
-import { cn } from "@/lib/utils";
+import {
+  Cormorant_Garamond,
+  Source_Sans_3,
+} from "next/font/google";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+import "./globals.css";
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -13,7 +20,7 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   title: "Alex Junfu Lu",
-  description: "International Relations Researcher",
+  description: "Academic portfolio website",
 };
 
 export default function RootLayout({
@@ -22,13 +29,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={cn(cormorant.variable, "font-sans", geist.variable)}
-    >
+    <html lang="en">
       <body
-        suppressHydrationWarning
-        className="min-h-screen bg-[#0B0B0F] font-sans antialiased"
+        className={`${sourceSans.variable} ${cormorant.variable} antialiased`}
       >
         {children}
       </body>

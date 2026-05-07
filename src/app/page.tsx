@@ -1,81 +1,82 @@
 import BlurText from "@/components/BlurText";
+import DotGridBackground from "@/components/DotGridBackground";
+
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#0B0B0F] text-[#F5F5F5]">
-      {/* Background Glow */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute left-1/2 top-[-10rem] h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-[#8FA7BF]/10 blur-[120px]" />
-        <div className="absolute bottom-[-10rem] right-[-5rem] h-[30rem] w-[30rem] rounded-full bg-[#C2A878]/10 blur-[120px]" />
-      </div>
-
+    <main className="grid-background noise relative min-h-screen overflow-hidden bg-[#28314E] text-[#F1E6D8]">
       {/* Navbar */}
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#0B0B0F]/70 backdrop-blur-xl">
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-[#F1E6D8]/10 bg-[#28314E]/75 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <a href="#home" className="font-display text-2xl font-semibold tracking-[-0.03em]">
+          <a
+            href="#home"
+            className="font-display text-2xl font-semibold tracking-[-0.03em] text-[#F1E6D8]"
+          >
             Alex Junfu Lu
           </a>
 
-          <div className="hidden items-center gap-8 text-sm text-zinc-400 md:flex">
-  <a href="#about" className="transition hover:text-[#F5F5F5]">
-    About
-  </a>
+          <div className="hidden items-center gap-8 text-sm text-[#F1E6D8]/70 md:flex">
+            <a href="#about" className="transition hover:text-[#AA2B3A]">
+              About
+            </a>
 
-  <a href="#research" className="transition hover:text-[#F5F5F5]">
-    Research
-  </a>
+            <a href="#research" className="transition hover:text-[#AA2B3A]">
+              Research
+            </a>
 
-  <a href="#projects" className="transition hover:text-[#F5F5F5]">
-    Projects
-  </a>
+            <a href="#projects" className="transition hover:text-[#AA2B3A]">
+              Projects
+            </a>
 
-  <a href="/cv" className="transition hover:text-[#F5F5F5]">
-    CV
-  </a>
+            <a href="/cv" className="transition hover:text-[#AA2B3A]">
+              CV
+            </a>
 
-  <a href="#contact" className="transition hover:text-[#F5F5F5]">
-    Contact
-  </a>
-</div>
+            <a href="#contact" className="transition hover:text-[#AA2B3A]">
+              Contact
+            </a>
+          </div>
         </nav>
       </header>
 
       {/* Hero Section */}
       <section
         id="home"
-        className="flex min-h-screen flex-col items-center justify-center px-6 pt-24 text-center"
+        className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-24 text-center"
       >
-        <p className="mb-6 text-sm uppercase tracking-[0.3em] text-[#8FA7BF]">
-          International Relations · Global Governance · Geopolitics
-        </p>
+        <DotGridBackground />
 
-        <BlurText
-  text="Alex Junfu Lu"
-  delay={120}
-  animateBy="words"
-  direction="top"
-  className="font-display max-w-5xl justify-center text-7xl font-semibold leading-none tracking-[-0.04em] md:text-9xl"
-/>
+        <div className="relative z-10 flex flex-col items-center">
+          <p className="mb-6 text-sm uppercase tracking-[0.3em] text-[#AA2B3A]">
+            INTERNATIONAL RELATIONS · GLOBAL GOVERNANCE · GEOPOLITICS
+          </p>
 
-        <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-400 md:text-xl">
-          Undergraduate researcher in International Relations, focusing on
-          institutional power, Indo-Pacific geopolitics, climate governance, and
-          international political economy.
-        </p>
+          <BlurText
+            text="Alex Junfu Lu"
+            delay={120}
+            animateBy="words"
+            direction="top"
+            className="font-display max-w-5xl justify-center text-7xl font-semibold leading-none tracking-[-0.04em] text-[#F1E6D8] md:text-9xl"
+          />
 
-        <div className="mt-12 flex gap-6">
-          <a
-            href="#research"
-            className="rounded-full border border-zinc-700 px-8 py-3 transition hover:border-[#8FA7BF] hover:text-[#8FA7BF]"
-          >
-            View Research
-          </a>
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-[#F1E6D8]/75 md:text-xl">
+          Researching institutional power, Indo-Pacific geopolitics, global governance, and strategic competition in contemporary international relations.
+          </p>
 
-          <a
-            href="#contact"
-            className="rounded-full bg-[#F5F5F5] px-8 py-3 text-black transition hover:opacity-80"
-          >
-            Contact
-          </a>
+          <div className="mt-12 flex gap-6">
+            <a
+              href="#research"
+              className="rounded-full border border-[#F1E6D8]/25 px-8 py-3 text-[#F1E6D8] transition hover:border-[#AA2B3A] hover:text-[#AA2B3A]"
+            >
+              View Research
+            </a>
+
+            <a
+              href="#contact"
+              className="rounded-full bg-[#F1E6D8] px-8 py-3 text-[#28314E] transition hover:bg-[#AA2B3A] hover:text-[#F1E6D8]"
+            >
+              Contact
+            </a>
+          </div>
         </div>
       </section>
 
@@ -83,197 +84,168 @@ export default function Home() {
       <section id="about" className="mx-auto max-w-6xl px-6 py-32">
         <div className="grid gap-16 md:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#C2A878]">
+            <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#AA2B3A]">
               About
             </p>
 
-            <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] md:text-6xl">
+            <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] text-[#F1E6D8] md:text-6xl">
               A research-oriented student of world politics.
             </h2>
           </div>
 
-          <div className="space-y-8 text-lg leading-8 text-zinc-400">
+          <div className="space-y-8 text-lg leading-8 text-[#F1E6D8]/75">
             <p>
               Alex Junfu Lu is an undergraduate student in International
-              Relations at Xi’an Jiaotong-Liverpool University. His academic
-              interests lie in global governance, international political
-              economy, Indo-Pacific security, and the role of institutions in
-              shaping power relations.
+              Relations at Xi’an Jiaotong-Liverpool University.
             </p>
 
             <p>
-              His current work examines how states, international organizations,
-              and institutional procedures respond to strategic uncertainty,
-              geopolitical rivalry, and unequal responsibility in global
-              governance.
+              His research focuses on Indo-Pacific geopolitics, institutional
+              governance, climate governance, and international political
+              economy.
             </p>
 
             <div className="grid gap-4 pt-6 md:grid-cols-3">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <p className="text-sm uppercase tracking-[0.2em] text-[#8FA7BF]">
-                  Education
-                </p>
-                <p className="mt-3 text-sm leading-6 text-zinc-400">
-                  Xi’an Jiaotong-Liverpool University
-                </p>
-              </div>
+              {[
+                ["Education", "Xi’an Jiaotong-Liverpool University"],
+                ["Field", "International Relations"],
+                ["Practice", "Research · MUN · Conference Design"],
+              ].map(([label, value]) => (
+                <div
+                  key={label}
+                  className="rounded-2xl border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-5"
+                >
+                  <p className="text-sm uppercase tracking-[0.2em] text-[#AA2B3A]">
+                    {label}
+                  </p>
 
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <p className="text-sm uppercase tracking-[0.2em] text-[#8FA7BF]">
-                  Field
-                </p>
-                <p className="mt-3 text-sm leading-6 text-zinc-400">
-                  International Relations
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <p className="text-sm uppercase tracking-[0.2em] text-[#8FA7BF]">
-                  Practice
-                </p>
-                <p className="mt-3 text-sm leading-6 text-zinc-400">
-                  Research · MUN · Conference Design
-                </p>
-              </div>
+                  <p className="mt-3 text-sm leading-6 text-[#F1E6D8]/70">
+                    {value}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Research Focus */}
-<section id="research" className="mx-auto max-w-6xl px-6 py-32">
-  <div className="mb-20">
-    <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#8FA7BF]">
-      Research Focus
-    </p>
+      {/* Research */}
+      <section id="research" className="mx-auto max-w-6xl px-6 py-32">
+        <div className="mb-20">
+          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#AA2B3A]">
+            Research Focus
+          </p>
 
-    <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] md:text-6xl">
-      Current Areas of Interest
-    </h2>
-  </div>
+          <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] text-[#F1E6D8] md:text-6xl">
+            Current Areas of Interest
+          </h2>
+        </div>
 
-  <div className="grid gap-8 md:grid-cols-2">
-    {[
-      {
-        title: "Indo-Pacific Strategy and Hedging",
-        description:
-          "Researching middle-power diplomacy, strategic ambiguity, ASEAN centrality, and geopolitical competition in the Indo-Pacific.",
-        href: "/research/indonesia-hedging",
-      },
-      {
-        title: "Climate Governance and Institutional Inequality",
-        description:
-          "Exploring climate finance, institutional fragmentation, and the unequal distribution of responsibilities in global governance.",
-        href: "#",
-      },
-      {
-        title: "International Organizations",
-        description:
-          "Analyzing institutional procedure, consensus-building, and governance mechanisms within international organizations.",
-        href: "#",
-      },
-      {
-        title: "Global Political Economy",
-        description:
-          "Examining trade, protectionism, strategic supply chains, and the political consequences of economic interdependence.",
-        href: "#",
-      },
-    ].map((item) => (
-      <a
-        key={item.title}
-        href={item.href}
-        className="group rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:-translate-y-1 hover:border-[#8FA7BF]/40 hover:bg-white/[0.07]"
-      >
-        <h3 className="font-display mb-4 text-3xl font-medium tracking-[-0.02em]">
-          {item.title}
-        </h3>
+        <div className="grid gap-8 md:grid-cols-2">
+          {[
+            {
+              title: "Indo-Pacific Strategy and Hedging",
+              description:
+                "Researching middle-power diplomacy, strategic ambiguity, ASEAN centrality, and geopolitical competition in the Indo-Pacific.",
+              href: "/research/indonesia-hedging",
+            },
+            {
+              title: "Climate Governance",
+              description:
+                "Exploring institutional fragmentation, climate finance, and global responsibility distribution.",
+              href: "#",
+            },
+            {
+              title: "International Organizations",
+              description:
+                "Analyzing procedural governance and institutional negotiation mechanisms.",
+              href: "#",
+            },
+            {
+              title: "Global Political Economy",
+              description:
+                "Examining protectionism, strategic supply chains, and economic interdependence.",
+              href: "#",
+            },
+          ].map((item) => (
+            <a
+              key={item.title}
+              href={item.href}
+              className="group rounded-3xl border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-8 transition hover:-translate-y-1 hover:border-[#AA2B3A]/50 hover:bg-[#F1E6D8]/[0.07]"
+            >
+              <h3 className="font-display mb-4 text-3xl font-medium tracking-[-0.02em] text-[#F1E6D8]">
+                {item.title}
+              </h3>
 
-        <p className="leading-7 text-zinc-400">{item.description}</p>
+              <p className="leading-7 text-[#F1E6D8]/70">
+                {item.description}
+              </p>
 
-        <p className="mt-8 text-sm uppercase tracking-[0.2em] text-[#8FA7BF] opacity-70 transition group-hover:opacity-100">
-          Read more →
-        </p>
-      </a>
-    ))}
-  </div>
-</section>
+              <p className="mt-8 text-sm uppercase tracking-[0.2em] text-[#AA2B3A] opacity-80 transition group-hover:opacity-100">
+                Read more →
+              </p>
+            </a>
+          ))}
+        </div>
+      </section>
 
       {/* Projects */}
-<section id="projects" className="mx-auto max-w-6xl px-6 py-32">
-  <div className="mb-20">
-    <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#C2A878]">
-      Academic Projects
-    </p>
-
-    <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] md:text-6xl">
-      Institutional and Conference Work
-    </h2>
-
-    <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
-      Selected academic and institutional projects combining research,
-      procedural design, and conference leadership.
-    </p>
-  </div>
-
-  <div className="space-y-6">
-    {[
-      {
-        year: "2026",
-        role: "Academic Director",
-        type: "Conference Design",
-        title: "Suzhou International Model United Nations",
-        description:
-          "Led academic planning, committee coordination, and standards design for an international Model United Nations conference hosted at Xi’an Jiaotong-Liverpool University.",
-      },
-      {
-        year: "2026",
-        role: "Rules Designer",
-        type: "Institutional Simulation",
-        title: "WHO Executive Board Special Session Simulation",
-        description:
-          "Designed a motion-driven Rules of Procedure system to replace the traditional General Speakers List and encourage consensus-oriented institutional negotiation.",
-      },
-      {
-        year: "2026",
-        role: "Research Lead",
-        type: "Committee Framework",
-        title: "UNODC Committee Background Guide",
-        description:
-          "Developed a structured research framework for transnational crime governance, integrating committee design, glossary architecture, and policy-oriented background analysis.",
-      },
-    ].map((project) => (
-      <article
-        key={project.title}
-        className="grid gap-8 rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:border-[#C2A878]/40 hover:bg-white/[0.07] md:grid-cols-[0.25fr_1fr]"
-      >
-        <div className="space-y-4 text-sm uppercase tracking-[0.18em] text-zinc-500">
-          <p>{project.year}</p>
-          <p className="text-[#C2A878]">{project.role}</p>
-          <p>{project.type}</p>
-        </div>
-
-        <div>
-          <h3 className="font-display mb-4 text-4xl font-medium tracking-[-0.03em]">
-            {project.title}
-          </h3>
-
-          <p className="max-w-3xl leading-7 text-zinc-400">
-            {project.description}
+      <section id="projects" className="mx-auto max-w-6xl px-6 py-32">
+        <div className="mb-20">
+          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#AA2B3A]">
+            Academic Projects
           </p>
+
+          <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] text-[#F1E6D8] md:text-6xl">
+            Institutional and Conference Work
+          </h2>
         </div>
-      </article>
-    ))}
-  </div>
-</section>
+
+        <div className="space-y-6">
+          {[
+            {
+              year: "2026",
+              role: "Academic Director",
+              title: "Suzhou International Model United Nations",
+            },
+            {
+              year: "2026",
+              role: "Rules Designer",
+              title: "WHO Executive Board Special Session",
+            },
+            {
+              year: "2026",
+              role: "Research Lead",
+              title: "UNODC Background Guide",
+            },
+          ].map((project) => (
+            <article
+              key={project.title}
+              className="rounded-3xl border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-8"
+            >
+              <div className="mb-4 flex items-center gap-4 text-sm uppercase tracking-[0.18em]">
+                <p className="text-[#F1E6D8]/50">{project.year}</p>
+
+                <p className="text-[#AA2B3A]">{project.role}</p>
+              </div>
+
+              <h3 className="font-display text-4xl tracking-[-0.03em] text-[#F1E6D8]">
+                {project.title}
+              </h3>
+            </article>
+          ))}
+        </div>
+      </section>
+
       {/* Contact */}
       <section id="contact" className="mx-auto max-w-6xl px-6 py-32">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-10 md:p-14">
-          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#8FA7BF]">
+        <div className="rounded-[2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-10 md:p-14">
+          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#AA2B3A]">
             Contact
           </p>
 
-          <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] md:text-6xl">
-            For academic collaboration, conference work, or research exchange.
+          <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] text-[#F1E6D8] md:text-6xl">
+            For academic collaboration and research exchange.
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -298,30 +270,28 @@ export default function Home() {
                 value: "@sebastien111105",
                 href: "https://www.instagram.com/sebastien111105",
               },
-              {
-                label: "TikTok",
-                value: "@Alex_supercool",
-                href: "https://www.tiktok.com/@Alex_supercool",
-              },
             ].map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                className="rounded-2xl border border-white/10 bg-[#0B0B0F]/60 p-6 transition hover:border-[#8FA7BF]/40 hover:bg-white/[0.07]"
+                className="rounded-2xl border border-[#F1E6D8]/10 bg-[#28314E]/60 p-6 transition hover:border-[#AA2B3A]/50"
               >
-                <p className="text-sm uppercase tracking-[0.2em] text-[#8FA7BF]">
+                <p className="text-sm uppercase tracking-[0.2em] text-[#AA2B3A]">
                   {item.label}
                 </p>
 
-                <p className="mt-4 break-words text-zinc-300">{item.value}</p>
+                <p className="mt-4 break-words text-[#F1E6D8]/80">
+                  {item.value}
+                </p>
               </a>
             ))}
           </div>
         </div>
       </section>
-      <footer className="border-t border-white/10 py-10 text-center text-sm text-zinc-500">
+
+      <footer className="border-t border-[#F1E6D8]/10 py-10 text-center text-sm text-[#F1E6D8]/55">
         © 2026 Alex Junfu Lu. All rights reserved.
       </footer>
     </main>

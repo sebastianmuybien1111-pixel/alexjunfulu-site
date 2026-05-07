@@ -1,11 +1,9 @@
 export default function CVPage() {
     return (
-      <main className="min-h-screen bg-[#0B0B0F] px-6 py-32 text-[#F5F5F5]">
+      <main className="grid-background noise min-h-screen bg-[#28314E] px-6 py-32 text-[#F1E6D8]">
         <div className="mx-auto max-w-5xl">
-          
-          {/* Header */}
-          <section className="border-b border-white/10 pb-16">
-            <p className="mb-6 text-sm uppercase tracking-[0.25em] text-[#8FA7BF]">
+          <section className="border-b border-[#F1E6D8]/10 pb-16">
+            <p className="mb-6 text-sm uppercase tracking-[0.25em] text-[#AA2B3A]">
               Curriculum Vitae
             </p>
   
@@ -13,40 +11,36 @@ export default function CVPage() {
               Alex Junfu Lu
             </h1>
   
-            <p className="mt-8 max-w-3xl text-lg leading-8 text-zinc-400">
-              Undergraduate researcher in International Relations focusing on
-              global governance, Indo-Pacific geopolitics, institutional power,
-              and international political economy.
+            <p className="mt-8 max-w-3xl text-lg leading-8 text-[#F1E6D8]/75">
+              Researching institutional power, Indo-Pacific geopolitics, global
+              governance, and strategic competition in contemporary international
+              relations.
             </p>
           </section>
   
-          {/* Education */}
           <section className="py-16">
             <h2 className="font-display mb-10 text-5xl font-semibold tracking-[-0.03em]">
               Education
             </h2>
   
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+            <div className="rounded-3xl border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-8">
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                
                 <div>
                   <h3 className="font-display text-3xl">
                     Xi’an Jiaotong-Liverpool University
                   </h3>
-  
-                  <p className="mt-3 text-zinc-400">
+                  <p className="mt-3 text-[#F1E6D8]/70">
                     B.A. in International Relations
                   </p>
                 </div>
   
-                <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
+                <p className="text-sm uppercase tracking-[0.2em] text-[#F1E6D8]/55">
                   Suzhou, China
                 </p>
               </div>
             </div>
           </section>
   
-          {/* Research Interests */}
           <section className="py-16">
             <h2 className="font-display mb-10 text-5xl font-semibold tracking-[-0.03em]">
               Research Interests
@@ -63,7 +57,7 @@ export default function CVPage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-lg text-zinc-300"
+                  className="rounded-2xl border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] px-6 py-5 text-lg text-[#F1E6D8]/80"
                 >
                   {item}
                 </div>
@@ -71,7 +65,6 @@ export default function CVPage() {
             </div>
           </section>
   
-          {/* Academic Projects */}
           <section className="py-16">
             <h2 className="font-display mb-10 text-5xl font-semibold tracking-[-0.03em]">
               Academic Projects
@@ -97,13 +90,10 @@ export default function CVPage() {
               ].map((project) => (
                 <div
                   key={project.title}
-                  className="rounded-3xl border border-white/10 bg-white/5 p-8"
+                  className="rounded-3xl border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-8"
                 >
-                  <h3 className="font-display text-3xl">
-                    {project.title}
-                  </h3>
-  
-                  <p className="mt-4 leading-7 text-zinc-400">
+                  <h3 className="font-display text-3xl">{project.title}</h3>
+                  <p className="mt-4 leading-7 text-[#F1E6D8]/70">
                     {project.description}
                   </p>
                 </div>
@@ -111,7 +101,6 @@ export default function CVPage() {
             </div>
           </section>
   
-          {/* Leadership */}
           <section className="py-16">
             <h2 className="font-display mb-10 text-5xl font-semibold tracking-[-0.03em]">
               Leadership and Academic Practice
@@ -125,7 +114,7 @@ export default function CVPage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-6 py-5 text-zinc-300"
+                  className="rounded-2xl border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] px-6 py-5 text-[#F1E6D8]/80"
                 >
                   {item}
                 </div>
@@ -133,7 +122,6 @@ export default function CVPage() {
             </div>
           </section>
   
-          {/* Languages */}
           <section className="py-16">
             <h2 className="font-display mb-10 text-5xl font-semibold tracking-[-0.03em]">
               Languages
@@ -147,20 +135,14 @@ export default function CVPage() {
               ].map(([language, level]) => (
                 <div
                   key={language}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                  className="rounded-2xl border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-6"
                 >
-                  <h3 className="font-display text-2xl">
-                    {language}
-                  </h3>
-  
-                  <p className="mt-3 text-zinc-400">
-                    {level}
-                  </p>
+                  <h3 className="font-display text-2xl">{language}</h3>
+                  <p className="mt-3 text-[#F1E6D8]/70">{level}</p>
                 </div>
               ))}
             </div>
           </section>
-  
         </div>
       </main>
     );

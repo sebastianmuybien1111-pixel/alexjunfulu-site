@@ -11,7 +11,7 @@ export default function CVPage() {
               Alex Junfu Lu
             </h1>
   
-            <p className="mt-8 max-w-3xl text-lg leading-8 text-[#F1E6D8]/75">
+            <p className="mt-10 max-w-xl text-[1.05rem] font-medium leading-8 tracking-[-0.01em] text-[#F1E6D8]/68 md:text-[1.15rem]">
               Researching institutional power, Indo-Pacific geopolitics, global
               governance, and strategic competition in contemporary international
               relations.

@@ -7,13 +7,13 @@ export default function DotGridBackground() {
     <div className="absolute inset-0 z-0 overflow-hidden">
       <DotGrid
         dotSize={8}
-        gap={14}
+        gap={18}
         baseColor="#28314E"
-        activeColor="#AA2B3A"
-        proximity={90}
+        activeColor="##3F4D73"
+        proximity={60}
         speedTrigger={30}
         shockRadius={400}
-        shockStrength={3}
+        shockStrength={1}
         maxSpeed={5000}
         resistance={900}
         returnDuration={5}

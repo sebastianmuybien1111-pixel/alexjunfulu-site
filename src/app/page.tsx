@@ -75,7 +75,6 @@ export default function Home() {
   colors={["#F1E6D8", "#D9B8A7", "#AA2B3A"]}
   direction="diagonal"
   animationSpeed={6}
-  showBorder={false}
   className="mt-8 text-[1.05rem] font-medium tracking-[-0.01em]"
 >
   Researching power, institutions, and strategic competition in world politics.

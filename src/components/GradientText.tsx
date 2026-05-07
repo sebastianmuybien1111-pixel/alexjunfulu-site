@@ -64,12 +64,23 @@ export default function GradientText({
   return (
     <motion.span
       className={className}
+      animate={{
+        backgroundPosition:
+          direction === 'vertical'
+            ? ['50% 0%', '50% 100%']
+            : ['0% 50%', '100% 50%'],
+      }}
+      transition={{
+        duration: animationSpeed,
+        repeat: Infinity,
+        repeatType: 'mirror',
+        ease: 'linear',
+      }}
       style={{
         display: 'inline-block',
         backgroundImage: `linear-gradient(${gradientAngle}, ${gradientColors})`,
         backgroundSize: '300% 300%',
         backgroundRepeat: 'repeat',
-        backgroundPosition,
         WebkitBackgroundClip: 'text',
         backgroundClip: 'text',
         WebkitTextFillColor: 'transparent',

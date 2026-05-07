@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import "./TrueFocus.css";
 
@@ -15,13 +15,22 @@ type TrueFocusProps = {
 
 export default function TrueFocus({
   phrases = ["INTERNATIONAL RELATIONS", "GLOBAL GOVERNANCE", "GEOPOLITICS"],
-  blurAmount = 2,
+  blurAmount = 0.1,
   borderColor = "#AA2B3A",
-  glowColor = "rgba(170,43,58,0.45)",
-  animationDuration = 0.7,
-  pauseBetweenAnimations = 1.4,
+  glowColor = "rgba(170,43,58,0.7)",
+  animationDuration = 0.85,
+  pauseBetweenAnimations = 1.55,
 }: TrueFocusProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const phraseRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
+  const [focusRect, setFocusRect] = useState({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  });
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -31,45 +40,80 @@ export default function TrueFocus({
     return () => window.clearInterval(interval);
   }, [phrases.length, animationDuration, pauseBetweenAnimations]);
 
+  useEffect(() => {
+    const updateRect = () => {
+      const container = containerRef.current;
+      const active = phraseRefs.current[currentIndex];
+
+      if (!container || !active) return;
+
+      const containerRect = container.getBoundingClientRect();
+      const activeRect = active.getBoundingClientRect();
+
+      const paddingX = 18;
+const paddingY = 10;
+
+setFocusRect({
+  x: activeRect.left - containerRect.left - paddingX,
+  y: activeRect.top - containerRect.top - paddingY,
+  width: activeRect.width + paddingX * 2,
+  height: activeRect.height + paddingY * 2,
+});
+    };
+
+    updateRect();
+    window.addEventListener("resize", updateRect);
+
+    return () => window.removeEventListener("resize", updateRect);
+  }, [currentIndex]);
+
   return (
-    <div className="focus-container">
+    <div
+      ref={containerRef}
+      className="focus-container"
+    >
       {phrases.map((phrase, index) => {
         const isActive = index === currentIndex;
-
+  
         return (
           <motion.span
-            key={phrase}
-            className="focus-word"
-            animate={{
-              opacity: isActive ? 1 : 0.28,
-              filter: isActive ? "blur(0px)" : `blur(${blurAmount}px)`,
-            }}
-            transition={{
-              duration: animationDuration,
-              ease: "easeInOut",
-            }}
-          >
-            {phrase}
-
-            {isActive && (
-              <span
-                className="focus-frame"
-                style={
-                  {
-                    "--border-color": borderColor,
-                    "--glow-color": glowColor,
-                  } as React.CSSProperties
-                }
-              >
-                <span className="corner top-left" />
-                <span className="corner top-right" />
-                <span className="corner bottom-left" />
-                <span className="corner bottom-right" />
-              </span>
-            )}
-          </motion.span>
+  key={phrase}
+  ref={(el) => {
+    phraseRefs.current[index] = el;
+  }}
+  className="focus-word"
+  animate={{
+    opacity: isActive ? 1 : 0.38,
+    filter: isActive ? "blur(0px)" : "blur(1.4px)",
+  }}
+  transition={{
+    duration: animationDuration,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
+  {phrase}
+</motion.span>
         );
       })}
+  
+      <motion.div
+        className="focus-frame"
+        animate={{
+          x: focusRect.x,
+          y: focusRect.y,
+          width: focusRect.width,
+          height: focusRect.height,
+        }}
+        transition={{
+          duration: animationDuration,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
+        <span className="corner top-left" />
+        <span className="corner top-right" />
+        <span className="corner bottom-left" />
+        <span className="corner bottom-right" />
+      </motion.div>
     </div>
   );
 }

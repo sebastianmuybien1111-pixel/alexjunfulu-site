@@ -265,7 +265,62 @@ export default function Home() {
     ))}
   </div>
 </section>
+      {/* Contact */}
+      <section id="contact" className="mx-auto max-w-6xl px-6 py-32">
+        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-10 md:p-14">
+          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#8FA7BF]">
+            Contact
+          </p>
 
+          <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] md:text-6xl">
+            For academic collaboration, conference work, or research exchange.
+          </h2>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {[
+              {
+                label: "Academic Email",
+                value: "junfu.lu24@student.xjtlu.edu.cn",
+                href: "mailto:junfu.lu24@student.xjtlu.edu.cn",
+              },
+              {
+                label: "Personal Email",
+                value: "sebastianmuybien1111@gmail.com",
+                href: "mailto:sebastianmuybien1111@gmail.com",
+              },
+              {
+                label: "GitHub",
+                value: "github.com/sebastianmuybien1111-pixel",
+                href: "https://github.com/sebastianmuybien1111-pixel",
+              },
+              {
+                label: "Instagram",
+                value: "@sebastien111105",
+                href: "https://www.instagram.com/sebastien111105",
+              },
+              {
+                label: "TikTok",
+                value: "@Alex_supercool",
+                href: "https://www.tiktok.com/@Alex_supercool",
+              },
+            ].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                className="rounded-2xl border border-white/10 bg-[#0B0B0F]/60 p-6 transition hover:border-[#8FA7BF]/40 hover:bg-white/[0.07]"
+              >
+                <p className="text-sm uppercase tracking-[0.2em] text-[#8FA7BF]">
+                  {item.label}
+                </p>
+
+                <p className="mt-4 break-words text-zinc-300">{item.value}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
       <footer className="border-t border-white/10 py-10 text-center text-sm text-zinc-500">
         © 2026 Alex Junfu Lu. All rights reserved.
       </footer>

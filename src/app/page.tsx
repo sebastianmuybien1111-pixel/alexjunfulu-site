@@ -101,13 +101,14 @@ export default function Home() {
 
             {/* Right: Portrait */}
             <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[2.2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.03] lg:mt-2">
-              <Image
-                src={newProfile}
-                alt="Alex Junfu Lu"
-                sizes="(min-width: 1024px) 420px, 100vw"
-                className="h-auto w-full object-cover object-center"
-                priority={true}
-              />
+            <Image
+  src="/new-profile.jpg"
+  alt="Alex Junfu Lu"
+  width={420}
+  height={520}
+  className="h-auto w-full object-cover object-center"
+  priority={true}
+/>
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#28314E]/20 via-transparent to-transparent" />
               <div className="absolute inset-0 ring-1 ring-inset ring-[#F1E6D8]/10" />

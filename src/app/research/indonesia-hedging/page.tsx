@@ -1,13 +1,10 @@
+import BackToHomeLink from "@/components/BackToHomeLink";
+
 export default function ResearchPage() {
   return (
     <main className="grid-background noise min-h-screen bg-[#28314E] px-6 py-32 text-[#F1E6D8]">
       <div className="mx-auto max-w-5xl">
-      <a
-          href="/"
-          className="mb-16 inline-flex items-center text-sm uppercase tracking-[0.2em] text-[#F1E6D8]/60 transition hover:text-[#AA2B3A]"
-        >
-          ← Back to Home
-        </a>
+        <BackToHomeLink className="mb-16" />
         {/* Header */}
         <section className="border-b border-[#F1E6D8]/10 pb-16">
           <p className="mb-6 text-sm uppercase tracking-[0.25em] text-[#AA2B3A]">

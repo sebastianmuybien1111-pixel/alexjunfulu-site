@@ -4,6 +4,10 @@ import { motion } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type AnimationStep = Record<string, string | number>;
+type AnimationKeyframes = Record<
+  string,
+  string | number | Array<string | number>
+>;
 
 type BlurTextProps = {
   text?: string;
@@ -20,16 +24,29 @@ type BlurTextProps = {
   stepDuration?: number;
 };
 
-const buildKeyframes = (from: AnimationStep, steps: AnimationStep[]) => {
+const buildKeyframes = (
+  from: AnimationStep,
+  steps: AnimationStep[],
+): AnimationKeyframes => {
   const keys = new Set([
     ...Object.keys(from),
     ...steps.flatMap((step) => Object.keys(step)),
   ]);
 
-  const keyframes: Record<string, Array<string | number | undefined>> = {};
+  const keyframes: AnimationKeyframes = {};
 
   keys.forEach((key) => {
-    keyframes[key] = [from[key], ...steps.map((step) => step[key])];
+    const firstValue =
+      from[key] ?? steps.find((step) => step[key] !== undefined)?.[key] ?? 0;
+    let previousValue = firstValue;
+
+    keyframes[key] = [
+      firstValue,
+      ...steps.map((step) => {
+        previousValue = step[key] ?? previousValue;
+        return previousValue;
+      }),
+    ];
   });
 
   return keyframes;
@@ -116,7 +133,7 @@ export default function BlurText({
             className="inline-block will-change-[transform,filter,opacity]"
             key={`${segment}-${index}`}
             initial={fromSnapshot}
-            animate={inView ? (animateKeyframes as any): fromSnapshot}
+            animate={inView ? animateKeyframes : fromSnapshot}
             transition={{
               duration: totalDuration,
               times,

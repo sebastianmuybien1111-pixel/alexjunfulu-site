@@ -51,14 +51,14 @@ export default function TrueFocus({
       const activeRect = active.getBoundingClientRect();
 
       const paddingX = 18;
-const paddingY = 10;
+      const paddingY = 10;
 
-setFocusRect({
-  x: activeRect.left - containerRect.left - paddingX,
-  y: activeRect.top - containerRect.top - paddingY,
-  width: activeRect.width + paddingX * 2,
-  height: activeRect.height + paddingY * 2,
-});
+      setFocusRect({
+        x: activeRect.left - containerRect.left - paddingX,
+        y: activeRect.top - containerRect.top - paddingY,
+        width: activeRect.width + paddingX * 2,
+        height: activeRect.height + paddingY * 2,
+      });
     };
 
     updateRect();
@@ -77,27 +77,31 @@ setFocusRect({
   
         return (
           <motion.span
-  key={phrase}
-  ref={(el) => {
-    phraseRefs.current[index] = el;
-  }}
-  className="focus-word"
-  animate={{
-    opacity: isActive ? 1 : 0.38,
-    filter: isActive ? "blur(0px)" : "blur(1.4px)",
-  }}
-  transition={{
-    duration: animationDuration,
-    ease: [0.22, 1, 0.36, 1],
-  }}
->
-  {phrase}
-</motion.span>
+            key={phrase}
+            ref={(el) => {
+              phraseRefs.current[index] = el;
+            }}
+            className="focus-word"
+            animate={{
+              opacity: isActive ? 1 : 0.38,
+              filter: isActive ? "blur(0px)" : `blur(${blurAmount}px)`,
+            }}
+            transition={{
+              duration: animationDuration,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            {phrase}
+          </motion.span>
         );
       })}
   
       <motion.div
         className="focus-frame"
+        style={{
+          borderColor,
+          boxShadow: `0 0 24px ${glowColor}`,
+        }}
         animate={{
           x: focusRect.x,
           y: focusRect.y,

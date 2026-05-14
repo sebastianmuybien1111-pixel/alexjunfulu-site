@@ -1,17 +1,146 @@
-import BlurText from "@/components/BlurText";
 import DotGridBackground from "@/components/DotGridBackground";
 import TrueFocus from "@/components/TrueFocus";
-import ScrollFloat from "@/components/ScrollFloat";
 import GradientText from "@/components/GradientText";
+import InteractivePanel from "@/components/InteractivePanel";
+import SplitText from "@/components/SplitText";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import TargetCursor from "@/components/TargetCursor";
-import newProfile from "../../public/new-profile.jpg";
+
+const researchAreas = [
+  "International Relations",
+  "Global Governance",
+  "Strategic Competition",
+  "Institutional Design",
+];
+
+const profileHighlights = [
+  {
+    value: "IR",
+    label: "Undergraduate Research",
+  },
+  {
+    value: "MUN",
+    label: "Conference Leadership",
+  },
+  {
+    value: "IPE",
+    label: "Political Economy Focus",
+  },
+];
+
+const capabilityCards = [
+  {
+    label: "Research",
+    title: "Academic Inquiry • Political Analysis",
+    description:
+      "Driven by curiosity and critical thinking to understand power, ideas, and political dynamics in the international system.",
+  },
+  {
+    label: "Governance",
+    title: "Institutions • Global Affairs",
+    description:
+      "Exploring how institutions shape collective action and global challenges through governance, policy, and international cooperation.",
+  },
+  {
+    label: "Diplomacy",
+    title: "Negotiation • Multilateralism",
+    description:
+      "Engaging in dialogue and negotiation across diverse perspectives to build understanding and advance cooperative solutions.",
+  },
+  {
+    label: "Conferences",
+    title: "MUN • Committee Design",
+    description:
+      "Designing meaningful MUN experiences and fostering impactful discussions through structure, leadership, and collaboration.",
+  },
+];
+
+const researchItems = [
+  {
+    year: "2026",
+    status: "Working Paper",
+    title:
+      "The Myth of Indonesian Neutrality: Strategic Ambiguity and Selective Alignment in Southeast Asian Great-Power Politics",
+    abstract:
+      "This project examines how Indonesia navigates Sino-American rivalry through hedging, selective alignment, and institutional ambiguity rather than conventional neutrality.",
+    keywords: ["Indonesia", "Hedging", "ASEAN", "Indo-Pacific"],
+    href: "/research/indonesia-hedging",
+  },
+  {
+    year: "2026",
+    status: "Research Theme",
+    title: "Climate Governance and Institutional Inequality",
+    abstract:
+      "This project examines the Financial Rift between emissions, vulnerability, and climate finance, proposing a justice-based Climate Policy Coordination Alliance.",
+    keywords: ["Climate Justice", "Financial Rift", "CPCA", "Global South"],
+    href: "/research/climate-governance",
+  },
+  {
+    year: "2026",
+    status: "Research Theme",
+    title: "International Organizations and Procedural Power",
+    abstract:
+      "This theme examines how institutional procedures, rules of negotiation, and consensus mechanisms shape political outcomes in international organizations.",
+    keywords: ["Institutions", "Procedure", "Negotiation"],
+    href: "#",
+  },
+];
+
+const academicProjects = [
+  {
+    year: "2026",
+    role: "Academic Director",
+    title: "Suzhou International Model United Nations",
+    detail:
+      "Leading committee architecture, research standards, and delegate-facing academic experience.",
+  },
+  {
+    year: "2026",
+    role: "Rules Designer",
+    title: "WHO Executive Board Special Session",
+    detail:
+      "Designing procedure, crisis rhythm, and negotiation incentives for a public-health simulation.",
+  },
+  {
+    year: "2026",
+    role: "Research Lead",
+    title: "UNODC Background Guide",
+    detail:
+      "Building issue briefs that connect institutional mandates, security dynamics, and policy tradeoffs.",
+  },
+];
+
+const contactLinks = [
+  {
+    label: "Academic Email",
+    value: "junfu.lu24@student.xjtlu.edu.cn",
+    href: "mailto:junfu.lu24@student.xjtlu.edu.cn",
+    ariaLabel: "Send an academic email to Alex Junfu Lu",
+  },
+  {
+    label: "Personal Email",
+    value: "sebastianmuybien1111@gmail.com",
+    href: "mailto:sebastianmuybien1111@gmail.com",
+    ariaLabel: "Send a personal email to Alex Junfu Lu",
+  },
+  {
+    label: "GitHub",
+    value: "github.com/sebastianmuybien1111-pixel",
+    href: "https://github.com/sebastianmuybien1111-pixel",
+    ariaLabel: "Visit Alex Junfu Lu's GitHub profile",
+  },
+  {
+    label: "Instagram",
+    value: "@sebastien111105",
+    href: "https://www.instagram.com/sebastien111105",
+    ariaLabel: "Visit Alex Junfu Lu's Instagram profile",
+  },
+];
 
 export default function Home() {
   return (
     <main className="grid-background noise relative min-h-screen overflow-hidden bg-[#28314E] text-[#F1E6D8]">
-      
       {/* 提取出的独立导航栏组件 */}
       <Navbar />
 
@@ -22,7 +151,13 @@ export default function Home() {
       >
         <DotGridBackground />
 
-        <div className="relative z-10 flex flex-col items-center">
+        <div className="pointer-events-none absolute inset-x-0 top-24 z-0 mx-auto h-80 max-w-5xl rounded-full bg-[#AA2B3A]/10 blur-3xl" />
+
+        <div className="relative z-10 flex max-w-6xl flex-col items-center">
+          <div className="mb-8 rounded-full border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.035] px-5 py-2 text-xs uppercase tracking-[0.28em] text-[#F1E6D8]/65 backdrop-blur-md">
+            Academic Portfolio • International Relations
+          </div>
+
           <div className="mb-10">
             <TrueFocus
               phrases={[
@@ -38,12 +173,19 @@ export default function Home() {
             />
           </div>
 
-          <BlurText
+          <SplitText
             text="Alex Junfu Lu"
-            delay={120}
-            animateBy="words"
-            direction="top"
-            className="font-display max-w-5xl justify-center text-7xl font-[600] leading-none tracking-[-0.055em] text-[#F1E6D8] drop-shadow-[0_0_12px_rgba(241,230,216,0.08)] md:text-9xl"
+            tag="h1"
+            splitType="words, chars"
+            delay={32}
+            duration={1.15}
+            threshold={0.02}
+            rootMargin="0px"
+            textAlign="center"
+            clip={false}
+            from={{ opacity: 0, y: 46, rotateX: -24, filter: "blur(12px)" }}
+            to={{ opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }}
+            className="font-display max-w-5xl text-7xl font-[600] leading-[0.95] tracking-[-0.06em] text-[#F1E6D8] drop-shadow-[0_18px_45px_rgba(0,0,0,0.22)] md:text-9xl"
           />
 
           <GradientText
@@ -55,20 +197,47 @@ export default function Home() {
             Researching power, institutions, and strategic competition in world politics.
           </GradientText>
 
-          <div className="mt-12 flex gap-6">
+          <div className="mt-8 flex max-w-3xl flex-wrap justify-center gap-3">
+            {researchAreas.map((area) => (
+              <InteractivePanel
+                key={area}
+                className="rounded-full border border-[#F1E6D8]/10 bg-[#28314E]/45 px-4 py-2 text-sm text-[#F1E6D8]/68 backdrop-blur-md hover:border-[#AA2B3A]/45"
+              >
+                {area}
+              </InteractivePanel>
+            ))}
+          </div>
+
+          <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6">
             <a
               href="#research"
-              className="rounded-full border border-[#F1E6D8]/25 px-8 py-3 text-[#F1E6D8] transition hover:border-[#AA2B3A] hover:text-[#AA2B3A]"
+              className="rounded-full border border-[#F1E6D8]/25 px-8 py-3 text-[#F1E6D8] transition hover:-translate-y-0.5 hover:border-[#AA2B3A] hover:text-[#AA2B3A]"
             >
               View Research
             </a>
 
             <a
               href="#contact"
-              className="rounded-full bg-[#F1E6D8] px-8 py-3 text-[#28314E] transition hover:bg-[#AA2B3A] hover:text-[#F1E6D8]"
+              className="rounded-full bg-[#F1E6D8] px-8 py-3 text-[#28314E] shadow-[0_18px_50px_rgba(241,230,216,0.14)] transition hover:-translate-y-0.5 hover:bg-[#AA2B3A] hover:text-[#F1E6D8]"
             >
               Contact
             </a>
+          </div>
+
+          <div className="mt-16 grid w-full max-w-3xl gap-3 sm:grid-cols-3">
+            {profileHighlights.map((item) => (
+              <InteractivePanel
+                key={item.label}
+                className="rounded-[1.4rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.035] px-5 py-4 backdrop-blur-md hover:border-[#AA2B3A]/45"
+              >
+                <p className="font-display text-3xl font-semibold tracking-[-0.04em] text-[#F1E6D8]">
+                  {item.value}
+                </p>
+                <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#F1E6D8]/50">
+                  {item.label}
+                </p>
+              </InteractivePanel>
+            ))}
           </div>
         </div>
       </section>
@@ -84,9 +253,15 @@ export default function Home() {
                 About
               </p>
 
-              <ScrollFloat className="font-display max-w-4xl text-5xl font-[500] leading-[1.05] tracking-[-0.045em] text-[#F1E6D8] md:text-6xl">
-                Exploring Politics, Institutions, and Global Affairs.
-              </ScrollFloat>
+              <SplitText
+                text="Exploring Politics, Institutions, and Global Affairs."
+                tag="h2"
+                splitType="words"
+                delay={70}
+                duration={0.9}
+                textAlign="left"
+                className="font-display max-w-4xl text-5xl font-[500] leading-[1.05] tracking-[-0.045em] text-[#F1E6D8] md:text-6xl"
+              />
 
               <div className="mt-10 max-w-3xl space-y-8 text-[1.05rem] leading-[2.15rem] text-[#F1E6D8]/70">
                 <p>
@@ -101,55 +276,51 @@ export default function Home() {
 
             {/* Right: Portrait */}
             <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[2.2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.03] lg:mt-2">
-            <Image
-  src="/new-profile.jpg"
-  alt="Alex Junfu Lu"
-  width={420}
-  height={520}
-  className="h-auto w-full object-cover object-center"
-  priority={true}
-/>
+              <Image
+                src="/new-profile.jpg"
+                alt="Alex Junfu Lu"
+                width={420}
+                height={520}
+                className="h-auto w-full object-cover object-center"
+                priority={true}
+              />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#28314E]/20 via-transparent to-transparent" />
               <div className="absolute inset-0 ring-1 ring-inset ring-[#F1E6D8]/10" />
+              <InteractivePanel className="absolute bottom-5 left-5 right-5 rounded-[1.6rem] border border-[#F1E6D8]/14 bg-[#28314E]/78 p-5 text-left shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-md hover:border-[#AA2B3A]/45">
+                <div className="flex items-start justify-between gap-5">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.24em] text-[#AA2B3A]">
+                      Field Note 01
+                    </p>
+                    <p className="font-display mt-3 text-2xl font-semibold leading-7 tracking-[-0.035em] text-[#F1E6D8]">
+                      Power is rarely neutral.
+                    </p>
+                  </div>
+
+                  <div className="font-display rounded-full border border-[#F1E6D8]/12 px-3 py-1 text-sm italic text-[#F1E6D8]/65">
+                    IR
+                  </div>
+                </div>
+
+                <p className="mt-4 text-sm leading-6 text-[#F1E6D8]/70">
+                  I study how institutions, domestic coalitions, and strategic
+                  ambiguity shape choices under geopolitical pressure.
+                </p>
+              </InteractivePanel>
             </div>
           </div>
 
           {/* Bottom Cards */}
           <TargetCursor
-  spinDuration={3.5}
-  hoverDuration={0.3}
-/>
+            spinDuration={3.5}
+            hoverDuration={0.3}
+          />
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {[
-              {
-                label: "Research",
-                title: "Academic Inquiry • Political Analysis",
-                description:
-                  "Driven by curiosity and critical thinking to understand power, ideas, and political dynamics in the international system.",
-              },
-              {
-                label: "Governance",
-                title: "Institutions • Global Affairs",
-                description:
-                  "Exploring how institutions shape collective action and global challenges through governance, policy, and international cooperation.",
-              },
-              {
-                label: "Diplomacy",
-                title: "Negotiation • Multilateralism",
-                description:
-                  "Engaging in dialogue and negotiation across diverse perspectives to build understanding and advance cooperative solutions.",
-              },
-              {
-                label: "Conferences",
-                title: "MUN • Committee Design",
-                description:
-                  "Designing meaningful MUN experiences and fostering impactful discussions through structure, leadership, and collaboration.",
-              },
-            ].map((item) => (
+            {capabilityCards.map((item) => (
               <div
                 key={item.label}
-                className="cursor-target rounded-[2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.035] p-8 backdrop-blur-sm transition hover:border-[#AA2B3A]/30"
+                className="cursor-target group rounded-[2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.035] p-8 backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:border-[#AA2B3A]/40 hover:bg-[#F1E6D8]/[0.055]"
               >
                 <p className="text-sm uppercase tracking-[0.32em] text-[#AA2B3A]">
                   {item.label}
@@ -164,6 +335,8 @@ export default function Home() {
                 <p className="mt-7 text-[1.02rem] leading-[2rem] text-[#F1E6D8]/65">
                   {item.description}
                 </p>
+
+                <div className="mt-8 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-[#AA2B3A] to-transparent transition duration-500 group-hover:scale-x-100" />
               </div>
             ))}
           </div>
@@ -177,9 +350,15 @@ export default function Home() {
             Research
           </p>
 
-          <ScrollFloat className="font-display text-5xl font-[500] leading-[1.08] tracking-[-0.03em] text-[#F1E6D8] md:text-6xl">
-          Research Directions and Working Papers
-          </ScrollFloat>
+          <SplitText
+            text="Research Directions and Working Papers"
+            tag="h2"
+            splitType="words"
+            delay={58}
+            duration={0.9}
+            textAlign="left"
+            className="font-display text-5xl font-[500] leading-[1.08] tracking-[-0.03em] text-[#F1E6D8] md:text-6xl"
+          />
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#F1E6D8]/70">
           An evolving body of research focused on power, institutions, negotiation, and the political dynamics shaping international affairs.
@@ -187,43 +366,14 @@ export default function Home() {
         </div>
 
         <div className="space-y-8">
-          {[
-            {
-              year: "2026",
-              status: "Working Paper",
-              title:
-                "The Myth of Indonesian Neutrality: Strategic Ambiguity and Selective Alignment in Southeast Asian Great-Power Politics",
-              abstract:
-                "This project examines how Indonesia navigates Sino-American rivalry through hedging, selective alignment, and institutional ambiguity rather than conventional neutrality.",
-              keywords: ["Indonesia", "Hedging", "ASEAN", "Indo-Pacific"],
-              href: "/research/indonesia-hedging",
-            },
-            {
-              year: "2026",
-              status: "Research Theme",
-              title:
-                "Climate Governance and Institutional Inequality",
-              abstract:
-                "This research direction explores how climate finance, fragmented governance, and unequal responsibility allocation shape contemporary global climate politics.",
-              keywords: ["Climate Finance", "Global Governance", "Inequality"],
-              href: "#",
-            },
-            {
-              year: "2026",
-              status: "Research Theme",
-              title:
-                "International Organizations and Procedural Power",
-              abstract:
-                "This theme examines how institutional procedures, rules of negotiation, and consensus mechanisms shape political outcomes in international organizations.",
-              keywords: ["Institutions", "Procedure", "Negotiation"],
-              href: "#",
-            },
-          ].map((item) => (
+          {researchItems.map((item) => (
             <a
               key={item.title}
               href={item.href}
-              className="group block rounded-[2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-8 transition hover:-translate-y-1 hover:border-[#AA2B3A]/50 hover:bg-[#F1E6D8]/[0.07] md:p-10"
+              className="group relative block overflow-hidden rounded-[2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-8 transition duration-500 hover:-translate-y-1 hover:border-[#AA2B3A]/50 hover:bg-[#F1E6D8]/[0.07] md:p-10"
             >
+              <div className="absolute right-0 top-0 h-40 w-40 translate-x-16 -translate-y-16 rounded-full bg-[#AA2B3A]/10 blur-2xl transition group-hover:bg-[#AA2B3A]/20" />
+
               <div className="mb-8 flex flex-wrap gap-4 text-sm uppercase tracking-[0.18em]">
                 <span className="text-[#F1E6D8]/50">{item.year}</span>
                 <span className="text-[#AA2B3A]">{item.status}</span>
@@ -249,7 +399,7 @@ export default function Home() {
               </div>
 
               <p className="mt-10 text-sm uppercase tracking-[0.2em] text-[#AA2B3A] opacity-80 transition group-hover:opacity-100">
-                Read Article →
+                Read Article
               </p>
             </a>
           ))}
@@ -263,32 +413,22 @@ export default function Home() {
             Academic Projects
           </p>
 
-          <ScrollFloat className="font-display text-5xl font-[500] leading-[1.08] tracking-[-0.03em] text-[#F1E6D8] md:text-6xl">
-            Institutional and Conference Work
-          </ScrollFloat>
+          <SplitText
+            text="Institutional and Conference Work"
+            tag="h2"
+            splitType="words"
+            delay={58}
+            duration={0.9}
+            textAlign="left"
+            className="font-display text-5xl font-[500] leading-[1.08] tracking-[-0.03em] text-[#F1E6D8] md:text-6xl"
+          />
         </div>
 
-        <div className="space-y-6">
-          {[
-            {
-              year: "2026",
-              role: "Academic Director",
-              title: "Suzhou International Model United Nations",
-            },
-            {
-              year: "2026",
-              role: "Rules Designer",
-              title: "WHO Executive Board Special Session",
-            },
-            {
-              year: "2026",
-              role: "Research Lead",
-              title: "UNODC Background Guide",
-            },
-          ].map((project) => (
+        <div className="grid gap-6 lg:grid-cols-3">
+          {academicProjects.map((project) => (
             <article
               key={project.title}
-              className="rounded-3xl border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-8"
+              className="group rounded-3xl border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-8 transition duration-500 hover:-translate-y-1 hover:border-[#AA2B3A]/40"
             >
               <div className="mb-4 flex items-center gap-4 text-sm uppercase tracking-[0.18em]">
                 <p className="text-[#F1E6D8]/50">{project.year}</p>
@@ -299,6 +439,12 @@ export default function Home() {
               <h3 className="font-display text-4xl tracking-[-0.03em] text-[#F1E6D8]">
                 {project.title}
               </h3>
+
+              <p className="mt-6 leading-8 text-[#F1E6D8]/64">
+                {project.detail}
+              </p>
+
+              <div className="mt-10 h-12 w-12 rounded-full border border-[#F1E6D8]/10 bg-[#28314E]/50 transition group-hover:border-[#AA2B3A]/50 group-hover:bg-[#AA2B3A]/10" />
             </article>
           ))}
         </div>
@@ -306,49 +452,32 @@ export default function Home() {
 
       {/* Contact */}
       <section id="contact" className="mx-auto max-w-6xl px-6 py-32">
-        <div className="rounded-[2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-10 md:p-14">
+        <div className="relative overflow-hidden rounded-[2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-10 md:p-14">
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#AA2B3A]/12 blur-3xl" />
+
           <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#AA2B3A]">
             Contact
           </p>
 
-          <h2 className="font-display text-5xl font-semibold tracking-[-0.03em] text-[#F1E6D8] md:text-6xl">
-            For academic collaboration and research exchange.
-          </h2>
+          <SplitText
+            text="For academic collaboration and research exchange."
+            tag="h2"
+            splitType="words"
+            delay={62}
+            duration={0.95}
+            textAlign="left"
+            className="font-display relative text-5xl font-semibold tracking-[-0.03em] text-[#F1E6D8] md:text-6xl"
+          />
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {[
-              {
-                label: "Academic Email",
-                value: "junfu.lu24@student.xjtlu.edu.cn",
-                href: "mailto:junfu.lu24@student.xjtlu.edu.cn",
-                ariaLabel: "Send an academic email to Alex Junfu Lu",
-              },
-              {
-                label: "Personal Email",
-                value: "sebastianmuybien1111@gmail.com",
-                href: "mailto:sebastianmuybien1111@gmail.com",
-                ariaLabel: "Send a personal email to Alex Junfu Lu",
-              },
-              {
-                label: "GitHub",
-                value: "github.com/sebastianmuybien1111-pixel",
-                href: "https://github.com/sebastianmuybien1111-pixel",
-                ariaLabel: "Visit Alex Junfu Lu's GitHub profile",
-              },
-              {
-                label: "Instagram",
-                value: "@sebastien111105",
-                href: "https://www.instagram.com/sebastien111105",
-                ariaLabel: "Visit Alex Junfu Lu's Instagram profile",
-              },
-            ].map((item) => (
+          <div className="relative mt-12 grid gap-6 md:grid-cols-2">
+            {contactLinks.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 aria-label={item.ariaLabel}
-                className="rounded-2xl border border-[#F1E6D8]/10 bg-[#28314E]/60 p-6 transition hover:border-[#AA2B3A]/50"
+                className="rounded-2xl border border-[#F1E6D8]/10 bg-[#28314E]/60 p-6 transition hover:-translate-y-0.5 hover:border-[#AA2B3A]/50"
               >
                 <p className="text-sm uppercase tracking-[0.2em] text-[#AA2B3A]">
                   {item.label}

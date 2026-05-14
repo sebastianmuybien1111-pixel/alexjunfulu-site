@@ -67,6 +67,73 @@ body {
   font-family: var(--font-display), serif;
 }
 
+.split-parent {
+  padding-block: 0.12em 0.22em;
+  perspective: 1000px;
+}
+
+.split-line,
+.split-word,
+.split-char {
+  display: inline-block;
+  transform-origin: 50% 100%;
+}
+
+.split-word {
+  white-space: nowrap;
+}
+
+.interactive-panel {
+  position: relative;
+  isolation: isolate;
+  transform: perspective(900px) rotateX(var(--panel-rotate-x))
+    rotateY(var(--panel-rotate-y));
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.interactive-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--panel-x) var(--panel-y),
+    rgba(241, 230, 216, 0.16),
+    rgba(170, 43, 58, 0.08) 34%,
+    transparent 68%
+  );
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.interactive-panel:hover::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+
+  .split-line,
+  .split-word,
+  .split-char {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+
+  .interactive-panel {
+    transform: none !important;
+  }
+}
+
 .grid-background {
   background-color: #28314E;
   background-image:

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 1180" role="img" aria-labelledby="title desc">
+  <title id="title">Fragments poster placeholder</title>
+  <desc id="desc">A quiet abstract visual-design placeholder with cut-paper geometry.</desc>
+  <rect width="840" height="1180" fill="#28314e"/>
+  <path d="M0 0h840v1180H0z" fill="#f1e6d8" opacity="0.035"/>
+  <path d="M108 128h624v924H108z" fill="none" stroke="#f1e6d8" stroke-opacity="0.18" stroke-width="2"/>
+  <path d="M154 220h320v410H154z" fill="#f1e6d8" opacity="0.08"/>
+  <path d="M360 360h326v318H360z" fill="#aa2b3a" opacity="0.22"/>
+  <path d="M202 746h436M202 806h304M202 866h370" stroke="#f1e6d8" stroke-opacity="0.74" stroke-width="13"/>
+  <path d="M202 964h160" stroke="#d9b8a7" stroke-opacity="0.86" stroke-width="8"/>
+</svg>

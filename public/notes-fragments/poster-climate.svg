@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 1180" role="img" aria-labelledby="title desc">
+  <title id="title">Climate poster placeholder</title>
+  <desc id="desc">Editorial poster placeholder with restrained typographic blocks.</desc>
+  <rect width="840" height="1180" fill="#f1e6d8"/>
+  <rect x="54" y="54" width="732" height="1072" fill="#28314e"/>
+  <circle cx="622" cy="276" r="146" fill="#aa2b3a" opacity="0.38"/>
+  <path d="M112 166h250M112 218h180M112 750h610M112 808h420M112 866h520" stroke="#f1e6d8" stroke-opacity="0.78" stroke-width="16"/>
+  <path d="M112 976h220M112 1018h150" stroke="#d9b8a7" stroke-opacity="0.9" stroke-width="8"/>
+  <path d="M112 320c148 124 288 124 420 0 68-64 132-92 190-86v336H112z" fill="#f1e6d8" opacity="0.08"/>
+</svg>

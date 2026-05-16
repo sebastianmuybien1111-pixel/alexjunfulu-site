@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 1180" role="img" aria-labelledby="title desc">
+  <title id="title">Conference poster placeholder</title>
+  <desc id="desc">Minimal poster placeholder with lines, margins, and a diplomatic red accent.</desc>
+  <rect width="840" height="1180" fill="#171d2f"/>
+  <rect x="74" y="74" width="692" height="1032" fill="#28314e" stroke="#f1e6d8" stroke-opacity="0.18" stroke-width="2"/>
+  <path d="M132 156h576M132 1024h576" stroke="#f1e6d8" stroke-opacity="0.24" stroke-width="2"/>
+  <path d="M134 266h370M134 328h250M134 640h570M134 700h450M134 760h520" stroke="#f1e6d8" stroke-opacity="0.78" stroke-width="14"/>
+  <path d="M562 246h86v86h-86zM656 246h52v86h-52z" fill="#aa2b3a" opacity="0.82"/>
+  <path d="M134 908h186" stroke="#d9b8a7" stroke-opacity="0.82" stroke-width="8"/>
+</svg>

@@ -78,12 +78,13 @@ const researchItems = [
   },
   {
     year: "2026",
-    status: "Research Theme",
-    title: "International Organizations and Procedural Power",
+    status: "Research Article",
+    title:
+      "De-Escalatory Institutionalism in the Grey Zone: How Informal Regional Institutions Manage Great-Power Rivalry Where Formal Authority Fails",
     abstract:
-      "This theme examines how institutional procedures, rules of negotiation, and consensus mechanisms shape political outcomes in international organizations.",
-    keywords: ["Institutions", "Procedure", "Negotiation"],
-    href: "#",
+      "This article explains how ASEAN's informal institutional architecture manages South China Sea grey-zone tensions through normative enmeshment, ritualized ambiguity, and reputational friction.",
+    keywords: ["ASEAN", "Grey-Zone Conflict", "Informal Institutions"],
+    href: "/research/de-escalatory-institutionalism",
   },
 ];
 

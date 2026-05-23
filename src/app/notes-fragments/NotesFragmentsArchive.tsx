@@ -20,32 +20,69 @@ type ArchiveItem = {
   artist?: string;
   mood?: string;
   note?: string;
+  previewTitle?: string;
+  previewSubtitle?: string;
+  previewStamp?: string;
+  accent?: string;
 };
 
 const filters: FilterType[] = ["All", "Videos", "Photography", "Posters", "Music"];
 
 const archiveItems: ArchiveItem[] = [
   {
+    title: "Simulation Reflection from the Indonesian Position",
+    type: "Videos",
+    date: "2026",
+    platform: "XJTLU Mediasite",
+    description:
+      "A reflective video response to a simulation exercise, thinking through how the Indonesian position navigates pressure, ambiguity, and strategic choice in a contested regional setting.",
+    externalLink:
+      "https://video.xjtlu.edu.cn/Mediasite/Play/629d76ec37a146ac98b36cd94f062c321d",
+    previewTitle: "Indonesia in Simulation",
+    previewSubtitle: "position, restraint, and strategic reflection",
+    previewStamp: "INS106 / Reflection",
+    accent: "from-[#AA2B3A]/38 via-[#D9B8A7]/14 to-[#0F172A]",
+    tags: ["Simulation", "Indonesia", "Reflection", "Strategy"],
+    featured: true,
+  },
+  {
+    title: "Sorting Waste, Framing Responsibility",
+    type: "Videos",
+    date: "2026",
+    platform: "XJTLU Mediasite",
+    description:
+      "A group video project on waste sorting that connects everyday disposal practices to questions of communication, collective behavior, and the international politics of responsibility.",
+    externalLink:
+      "https://video.xjtlu.edu.cn/Mediasite/Play/96e5802b26cd4402afd603c05bc6d2a51d",
+    previewTitle: "Waste Sorting Analysis",
+    previewSubtitle: "international relations meets communication practice",
+    previewStamp: "Group Video",
+    accent: "from-[#D9B8A7]/30 via-[#6B7280]/12 to-[#0F172A]",
+    tags: ["Waste Sorting", "Group Project", "Communication", "IR"],
+  },
+  {
     title: "A Short Moving-Image Fragment",
     type: "Videos",
     date: "2026",
     platform: "Bilibili",
     description:
-      "A featured video work gathered here as part of a broader archive of moving images, mood, place, and observation.",
+      "A short moving-image fragment uploaded to Bilibili, kept here as part of a wider archive of mood, place, pacing, and visual observation.",
     externalLink:
       "https://www.bilibili.com/video/BV1rXmKYmEGv/?spm_id_from=333.1387.0.0",
-    image: "/notes-fragments/video-bilibili.svg",
+    previewTitle: "Bilibili Fragment",
+    previewSubtitle: "moving image, atmosphere, and personal archive",
+    previewStamp: "Bilibili",
+    accent: "from-[#3B82F6]/26 via-[#AA2B3A]/14 to-[#0F172A]",
     tags: ["Moving Image", "Personal Archive", "Bilibili"],
-    featured: true,
   },
   {
     title: "Evening Geometry",
     type: "Photography",
     date: "Spring 2026",
     location: "Suzhou",
-    camera: "Daily camera placeholder",
+    camera: "Phone camera",
     description:
-      "A quiet study of architecture after dusk, where windows, river light, and pedestrian rhythm begin to flatten into shapes.",
+      "A dusk study of riverfront architecture, where window grids, reflected light, and walking rhythms settle into a more geometric composition.",
     image: "/notes-fragments/photo-suzhou.svg",
     tags: ["Street", "Evening", "Suzhou"],
   },
@@ -54,9 +91,9 @@ const archiveItems: ArchiveItem[] = [
     type: "Photography",
     date: "2026",
     location: "XJTLU",
-    camera: "Replace with camera/lens",
+    camera: "Phone camera",
     description:
-      "A daily photograph placeholder for soft institutional light, glass reflections, and the atmosphere between classes.",
+      "A visual note on campus glass, corridor light, and the suspended quiet that appears between lectures, movement, and institutional routine.",
     image: "/notes-fragments/photo-campus.svg",
     tags: ["Campus", "Light", "Everyday"],
   },
@@ -65,9 +102,9 @@ const archiveItems: ArchiveItem[] = [
     type: "Photography",
     date: "2025",
     location: "Suzhou",
-    camera: "Replace with camera/lens",
+    camera: "Phone camera",
     description:
-      "A spare visual note on wet pavement, blurred movement, and the way weather edits a familiar street.",
+      "A pared-back study of wet pavement, blurred movement, and the way weather quietly rewrites an otherwise familiar street.",
     image: "/notes-fragments/photo-rain.svg",
     tags: ["Rain", "Texture", "Observation"],
   },
@@ -87,7 +124,7 @@ const archiveItems: ArchiveItem[] = [
     date: "2026",
     context: "MUN visual design",
     description:
-      "A restrained conference-design placeholder, shaped around hierarchy, procedural clarity, and diplomatic atmosphere.",
+      "A conference-facing visual sheet designed around hierarchy, procedural clarity, and the restrained atmosphere of diplomatic formality.",
     image: "/notes-fragments/poster-mun.svg",
     tags: ["Conference", "Editorial", "Diplomacy"],
   },
@@ -150,9 +187,9 @@ export default function NotesFragmentsArchive({
       : archiveItems.filter((item) => item.type === activeFilter);
 
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-32">
-      <div className="sticky top-[7.7rem] z-20 -mx-2 mb-12 overflow-x-auto px-2 py-3 backdrop-blur-md md:top-[4.9rem]">
-        <div className="flex min-w-max gap-3">
+    <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6 md:pb-32">
+      <div className="sticky top-[9.9rem] z-20 -mx-2 mb-10 px-2 py-3 backdrop-blur-md sm:top-[9.2rem] md:top-[4.9rem]">
+        <div className="flex flex-wrap gap-3">
           {filters.map((filter) => (
             <Link
               key={filter}
@@ -161,7 +198,7 @@ export default function NotesFragmentsArchive({
                   ? "/notes-fragments"
                   : `/notes-fragments?filter=${encodeURIComponent(filter)}`
               }
-              className={`rounded-full border px-5 py-2.5 text-sm transition duration-300 hover:-translate-y-0.5 hover:border-[#AA2B3A]/60 hover:text-[#AA2B3A] ${
+              className={`rounded-full border px-4 py-2 text-xs transition duration-300 hover:-translate-y-0.5 hover:border-[#AA2B3A]/60 hover:text-[#AA2B3A] sm:px-5 sm:py-2.5 sm:text-sm ${
                 activeFilter === filter
                   ? "border-[#AA2B3A]/60 bg-[#AA2B3A]/12 text-[#AA2B3A]"
                   : "border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.035] text-[#F1E6D8]/68"
@@ -183,13 +220,85 @@ export default function NotesFragmentsArchive({
 }
 
 function ArchiveCard({ item }: { item: ArchiveItem }) {
+  const isVideo = item.type === "Videos";
   const cardContent = (
     <div
       className={`group flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] transition duration-500 hover:-translate-y-1 hover:border-[#AA2B3A]/45 hover:bg-[#F1E6D8]/[0.06] ${
         item.featured ? "md:col-span-2" : ""
       }`}
     >
-      {item.image ? (
+      {isVideo ? (
+        <div
+          className={`video-preview-shell relative overflow-hidden border-b border-[#F1E6D8]/10 ${
+            item.featured ? "aspect-[16/9]" : "aspect-[4/3]"
+          }`}
+        >
+          <div
+            className={`absolute inset-0 bg-gradient-to-br ${item.accent ?? "from-[#AA2B3A]/30 via-[#D9B8A7]/10 to-[#0F172A]"}`}
+          />
+          <div className="video-preview-grid absolute inset-0 opacity-45" />
+          <div className="video-preview-glow absolute left-[8%] top-[12%] h-28 w-28 rounded-full bg-[#F1E6D8]/12 blur-3xl" />
+          <div className="video-preview-scan absolute inset-y-0 left-[-18%] w-1/3 rotate-[10deg] bg-gradient-to-r from-transparent via-[#F1E6D8]/12 to-transparent" />
+
+          <div className="relative flex h-full flex-col justify-between p-4 sm:p-5 md:p-6">
+            <div className="flex items-start justify-between gap-4">
+              <div className="rounded-full border border-[#F1E6D8]/16 bg-[#28314E]/70 px-4 py-2 text-[0.7rem] uppercase tracking-[0.22em] text-[#F1E6D8]/70 backdrop-blur-md">
+                {item.platform}
+              </div>
+              {item.previewStamp ? (
+                <div className="rounded-full border border-[#F1E6D8]/12 bg-[#F1E6D8]/8 px-3 py-1.5 text-[0.65rem] uppercase tracking-[0.22em] text-[#F1E6D8]/60">
+                  {item.previewStamp}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="max-w-full sm:max-w-[70%]">
+                <p className="text-xs uppercase tracking-[0.24em] text-[#D9B8A7]">
+                  Video Preview
+                </p>
+                <p className="mt-3 font-display text-[1.9rem] leading-[0.98] tracking-[-0.035em] text-[#F1E6D8] sm:text-4xl md:text-5xl">
+                  {item.previewTitle ?? item.title}
+                </p>
+                {item.previewSubtitle ? (
+                  <p className="mt-3 max-w-lg text-[0.82rem] leading-6 text-[#F1E6D8]/66 sm:text-sm md:text-base">
+                    {item.previewSubtitle}
+                  </p>
+                ) : null}
+              </div>
+
+              <div className="video-preview-play-wrap shrink-0 self-start sm:self-auto">
+                <div className="video-preview-play-ring flex h-16 w-16 items-center justify-center rounded-full border border-[#F1E6D8]/18 bg-[#F1E6D8]/10 backdrop-blur-md sm:h-20 sm:w-20 md:h-24 md:w-24">
+                  <div className="ml-1 h-0 w-0 border-b-[12px] border-l-[20px] border-t-[12px] border-b-transparent border-l-[#F1E6D8] border-t-transparent md:border-b-[14px] md:border-l-[24px] md:border-t-[14px]" />
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#F1E6D8]/10">
+                  <div className="video-preview-progress h-full w-1/2 rounded-full bg-[#F1E6D8]/70" />
+                </div>
+                <span className="text-[0.65rem] uppercase tracking-[0.2em] text-[#F1E6D8]/44">
+                  preview
+                </span>
+              </div>
+              <div className="flex gap-1">
+                {Array.from({ length: 24 }).map((_, index) => (
+                  <span
+                    key={`${item.title}-${index}`}
+                    className="video-preview-wave flex-1 rounded-full bg-[#F1E6D8]/18"
+                    style={{
+                      height: `${12 + ((index * 13) % 32)}px`,
+                      animationDelay: `${index * 0.08}s`,
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : item.image ? (
         <div
           className={`relative overflow-hidden border-b border-[#F1E6D8]/10 ${
             item.featured ? "aspect-[16/9]" : "aspect-[4/3]"
@@ -218,7 +327,7 @@ function ArchiveCard({ item }: { item: ArchiveItem }) {
         </div>
       )}
 
-      <div className="flex grow flex-col p-7 md:p-8">
+      <div className="flex grow flex-col p-6 sm:p-7 md:p-8">
         <div className="mb-5 flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em]">
           <span className="text-[#AA2B3A]">{item.date}</span>
           {item.platform ? <span className="text-[#F1E6D8]/48">{item.platform}</span> : null}
@@ -226,11 +335,13 @@ function ArchiveCard({ item }: { item: ArchiveItem }) {
           {item.artist ? <span className="text-[#F1E6D8]/48">{item.artist}</span> : null}
         </div>
 
-        <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-[-0.035em] text-[#F1E6D8]">
+        <h2 className="font-display text-[1.9rem] font-medium leading-[1.03] tracking-[-0.03em] text-[#F1E6D8] sm:text-4xl sm:leading-[1.05] sm:tracking-[-0.035em]">
           {item.title}
         </h2>
 
-        <p className="mt-5 leading-8 text-[#F1E6D8]/68">{item.description}</p>
+        <p className="mt-5 text-[0.98rem] leading-7 text-[#F1E6D8]/68 sm:text-base sm:leading-8">
+          {item.description}
+        </p>
 
         <div className="mt-7 space-y-2 text-sm leading-6 text-[#F1E6D8]/56">
           {item.location ? <p>Location: {item.location}</p> : null}
@@ -252,7 +363,7 @@ function ArchiveCard({ item }: { item: ArchiveItem }) {
 
         {item.externalLink ? (
           <span className="mt-8 inline-flex text-sm uppercase tracking-[0.2em] text-[#AA2B3A]">
-            Open External Link
+            {isVideo ? "Watch External Video" : "Open External Link"}
           </span>
         ) : null}
       </div>

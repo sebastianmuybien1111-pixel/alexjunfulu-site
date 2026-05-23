@@ -29,21 +29,11 @@ const cormorant = localFont({
   variable: "--font-display",
 });
 
-const sourceSans = localFont({
+const ibmPlexSans = localFont({
   src: [
     {
-      path: "../../public/fonts/SourceSans3-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/SourceSans3-Medium.ttf",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/SourceSans3-Bold.ttf",
-      weight: "700",
+      path: "../../public/fonts/IBMPlexSans-Variable.ttf",
+      weight: "400 700",
       style: "normal",
     },
   ],
@@ -51,9 +41,7 @@ const sourceSans = localFont({
 });
 
 export const metadata: Metadata = {
-  // 添加了 metadataBase 解决终端里的黄色警告。
-  // 注意：在你的网站正式上线并购买域名后，请将这里的 localhost 替换为你的真实域名（例如：https://alexjunfulu.com）
-  metadataBase: new URL("http://localhost:3000"), 
+  metadataBase: new URL("https://alexjunfulu.top"),
   title: "Alex Junfu Lu | International Relations Researcher",
   description: "Academic portfolio of Alex Junfu Lu, researching how power operates in the international system and how domestic politics shape those power relations.",
   keywords: [
@@ -88,7 +76,6 @@ export const metadata: Metadata = {
   },
 };
 
-// 刚才不小心被删掉的就是下面这个默认导出的布局组件：
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -96,7 +83,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sourceSans.variable} ${cormorant.variable}`}>
+      <body className={`${ibmPlexSans.variable} ${cormorant.variable}`}>
         {children}
       </body>
     </html>

@@ -10,7 +10,7 @@ export default function BackToHomeLink({
   return (
     <Link
       href="/"
-      className={`inline-flex items-center gap-4 text-sm uppercase tracking-[0.34em] text-[#AA2B3A] transition hover:text-[#F1E6D8] ${className}`.trim()}
+      className={`inline-flex items-center gap-3 text-[0.72rem] uppercase tracking-[0.28em] text-[#AA2B3A] transition hover:text-[#F1E6D8] sm:gap-4 sm:text-sm sm:tracking-[0.34em] ${className}`.trim()}
     >
       <span aria-hidden="true" className="text-base leading-none">
         ←

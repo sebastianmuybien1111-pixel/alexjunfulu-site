@@ -75,33 +75,41 @@ export default function SplitText({
   const ref = useRef<HTMLElement | null>(null);
   const animationCompletedRef = useRef(false);
   const onCompleteRef = useRef(onLetterAnimationComplete);
-  const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [fontsLoaded, setFontsLoaded] = useState(() => {
+    if (typeof document === "undefined") {
+      return false;
+    }
+
+    return !("fonts" in document) || document.fonts.status === "loaded";
+  });
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
     onCompleteRef.current = onLetterAnimationComplete;
   }, [onLetterAnimationComplete]);
 
   useEffect(() => {
-    if (!("fonts" in document)) {
-      setFontsLoaded(true);
+    if (typeof document === "undefined") {
       return;
     }
 
-    if (document.fonts.status === "loaded") {
-      setFontsLoaded(true);
+    if (!("fonts" in document) || document.fonts.status === "loaded") {
       return;
     }
 
     document.fonts.ready.then(() => setFontsLoaded(true));
-  }, []);
+  }, [fontsLoaded]);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const updateMotionPreference = () => {
       setPrefersReducedMotion(mediaQuery.matches);
     };
-
     updateMotionPreference();
     mediaQuery.addEventListener("change", updateMotionPreference);
 
@@ -111,9 +119,26 @@ export default function SplitText({
   }, []);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateScreenSize = () => {
+      setIsSmallScreen(mediaQuery.matches);
+    };
+    updateScreenSize();
+    mediaQuery.addEventListener("change", updateScreenSize);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateScreenSize);
+    };
+  }, []);
+
+  useEffect(() => {
     const element = ref.current;
 
-    if (!element || !text || !fontsLoaded || prefersReducedMotion) {
+    if (!element || !text || !fontsLoaded || prefersReducedMotion || isSmallScreen) {
       return;
     }
 
@@ -192,6 +217,7 @@ export default function SplitText({
     text,
     threshold,
     to,
+    isSmallScreen,
   ]);
 
   return React.createElement(
@@ -205,7 +231,7 @@ export default function SplitText({
         textAlign,
         transformStyle: "preserve-3d",
         wordWrap: "break-word",
-        willChange: "transform, opacity",
+        willChange: isSmallScreen ? "auto" : "transform, opacity",
       },
     },
     text,

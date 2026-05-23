@@ -68,3 +68,16 @@
   border-bottom: 2px solid #f1e6d8;
   border-right: 2px solid #f1e6d8;
 }
+
+@media (max-width: 767px) {
+  .focus-container {
+    gap: 1rem;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .focus-word {
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+  }
+}

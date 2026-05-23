@@ -1,5 +1,7 @@
 import BackToHomeLink from "@/components/BackToHomeLink";
 import InteractivePanel from "@/components/InteractivePanel";
+import ResearchContinuum from "@/components/ResearchContinuum";
+import ResearchPdfShowcase from "@/components/ResearchPdfShowcase";
 import SplitText from "@/components/SplitText";
 
 const abstractParagraphs = [
@@ -165,15 +167,15 @@ const references = [
 
 export default function DeEscalatoryInstitutionalismPage() {
   return (
-    <main className="grid-background noise min-h-screen overflow-hidden bg-[#28314E] px-6 py-28 text-[#F1E6D8]">
+    <main className="grid-background noise min-h-screen overflow-hidden bg-[#28314E] px-4 py-20 text-[#F1E6D8] sm:px-6 sm:py-28">
       <div className="mx-auto max-w-6xl">
-        <BackToHomeLink className="mb-16" />
+        <BackToHomeLink className="mb-12 sm:mb-16" />
 
-        <section className="relative overflow-hidden rounded-[2.4rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.18)] md:p-12">
+        <section className="relative overflow-hidden rounded-[2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.18)] sm:rounded-[2.4rem] sm:p-8 md:p-12">
           <div className="absolute -right-20 top-0 h-80 w-80 rounded-full bg-[#AA2B3A]/14 blur-3xl" />
           <div className="absolute -bottom-24 left-8 h-64 w-64 rounded-full bg-[#D9B8A7]/10 blur-3xl" />
 
-          <p className="relative mb-6 text-sm uppercase tracking-[0.28em] text-[#AA2B3A]">
+          <p className="relative mb-6 text-[0.68rem] uppercase tracking-[0.22em] text-[#AA2B3A] sm:text-sm sm:tracking-[0.28em]">
             Research Article • Informal Institutions
           </p>
 
@@ -185,28 +187,34 @@ export default function DeEscalatoryInstitutionalismPage() {
             duration={1}
             textAlign="left"
             clip={false}
-            className="font-display relative max-w-5xl text-6xl font-semibold leading-[0.98] tracking-[-0.045em] md:text-8xl"
+            className="font-display relative max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.04em] sm:text-6xl md:text-8xl md:tracking-[-0.045em]"
           />
 
-          <p className="relative mt-8 max-w-4xl text-2xl leading-10 text-[#F1E6D8]/82">
+          <p className="relative mt-8 max-w-4xl text-[1.05rem] leading-8 text-[#F1E6D8]/82 sm:text-2xl sm:leading-10">
             How informal regional institutions manage great-power rivalry
             where formal authority fails.
           </p>
 
-          <div className="relative mt-10 flex flex-wrap gap-4">
+          <div className="relative mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <a
               href="/research/de-escalatory-institutionalism-paper.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-[#F1E6D8] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#28314E] transition hover:-translate-y-0.5 hover:bg-[#AA2B3A] hover:text-[#F1E6D8]"
+              className="rounded-full bg-[#F1E6D8] px-6 py-3 text-center text-sm font-semibold uppercase tracking-[0.18em] text-[#28314E] transition hover:-translate-y-0.5 hover:bg-[#AA2B3A] hover:text-[#F1E6D8]"
             >
               Read Full PDF
             </a>
             <a
               href="#framework"
-              className="rounded-full border border-[#F1E6D8]/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#F1E6D8] transition hover:-translate-y-0.5 hover:border-[#AA2B3A] hover:text-[#AA2B3A]"
+              className="rounded-full border border-[#F1E6D8]/20 px-6 py-3 text-center text-sm font-semibold uppercase tracking-[0.18em] text-[#F1E6D8] transition hover:-translate-y-0.5 hover:border-[#AA2B3A] hover:text-[#AA2B3A]"
             >
               View Framework
+            </a>
+            <a
+              href="#paper-preview"
+              className="rounded-full border border-[#AA2B3A]/40 bg-[#AA2B3A]/10 px-6 py-3 text-center text-sm font-semibold uppercase tracking-[0.18em] text-[#D9B8A7] transition hover:-translate-y-0.5 hover:bg-[#AA2B3A]/16 hover:text-[#F1E6D8]"
+            >
+              View Showcase
             </a>
           </div>
         </section>
@@ -216,14 +224,14 @@ export default function DeEscalatoryInstitutionalismPage() {
             <p className="mb-4 text-sm uppercase tracking-[0.25em] text-[#AA2B3A]">
               Research Puzzle
             </p>
-            <h2 className="font-display text-5xl leading-tight tracking-[-0.04em] md:text-6xl">
+            <h2 className="font-display text-4xl leading-[1.02] tracking-[-0.04em] sm:text-5xl md:text-6xl">
               Why can informal institutions sometimes manage security tensions
               better than formal universal bodies?
             </h2>
           </div>
 
           <InteractivePanel className="rounded-[2rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-8">
-            <p className="text-xl leading-9 text-[#F1E6D8]/78">
+            <p className="text-[1rem] leading-8 text-[#F1E6D8]/78 sm:text-xl sm:leading-9">
               The article argues that ASEAN occupies a functional niche in South
               China Sea governance that the UNSC cannot fill. Its effectiveness
               lies not in enforcement or dispute settlement, but in preventing
@@ -232,6 +240,15 @@ export default function DeEscalatoryInstitutionalismPage() {
             </p>
           </InteractivePanel>
         </section>
+
+        <ResearchPdfShowcase
+          eyebrow="Paper Showcase"
+          title="The article now sits on the page as a visible research object with room to be explored."
+          description="This section gives the project the same spatial weight as your Indonesia paper: visitors can understand the core intervention quickly, then move straight into the draft itself through an embedded preview and direct PDF access."
+          pdfHref="/research/de-escalatory-institutionalism-paper.pdf"
+          previewTitle="De-Escalatory Institutionalism in the Grey Zone PDF preview"
+          badge="Research Article"
+        />
 
         <section className="py-8">
           <p className="mb-8 text-sm uppercase tracking-[0.25em] text-[#AA2B3A]">
@@ -500,6 +517,8 @@ export default function DeEscalatoryInstitutionalismPage() {
             ))}
           </div>
         </section>
+
+        <ResearchContinuum currentSlug="de-escalatory-institutionalism" />
       </div>
     </main>
   );

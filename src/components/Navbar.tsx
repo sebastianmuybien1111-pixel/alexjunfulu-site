@@ -16,11 +16,19 @@ const navLinks = [
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const pathname = usePathname();
+  const routeActiveSection =
+    pathname === "/"
+      ? null
+      : pathname.startsWith("/research")
+        ? "research"
+        : pathname.startsWith("/notes-fragments")
+          ? "notes-fragments"
+          : pathname.startsWith("/cv")
+            ? "cv"
+            : navLinks.find((link) => link.href === pathname)?.id ?? "";
 
   useEffect(() => {
     if (pathname !== "/") {
-      const activeRoute = navLinks.find((link) => link.href === pathname);
-      setActiveSection(activeRoute?.id ?? "");
       return;
     }
 
@@ -46,11 +54,11 @@ export default function Navbar() {
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full border-b border-[#F1E6D8]/10 bg-[#28314E]/75 backdrop-blur-xl">
-      <nav className="mx-auto max-w-7xl px-6 py-4 md:flex md:items-center md:justify-between md:py-5">
+      <nav className="mx-auto max-w-7xl px-4 py-4 md:flex md:items-center md:justify-between md:px-6 md:py-5">
         <div className="flex items-center justify-between">
           <Link
             href="/#home"
-            className="font-display text-2xl font-semibold tracking-[-0.03em] text-[#F1E6D8]"
+            className="font-display text-[2rem] font-semibold tracking-[-0.03em] text-[#F1E6D8] md:text-2xl"
           >
             Alex Junfu Lu
           </Link>
@@ -62,7 +70,9 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               className={`transition hover:text-[#AA2B3A] ${
-                activeSection === link.id ? "text-[#AA2B3A] font-medium" : ""
+                (routeActiveSection ?? activeSection) === link.id
+                  ? "text-[#AA2B3A] font-medium"
+                  : ""
               }`}
             >
               {link.name}
@@ -70,13 +80,13 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="mt-4 flex gap-2 overflow-x-auto pb-1 text-xs text-[#F1E6D8]/68 md:hidden">
+        <div className="mt-4 grid grid-cols-2 gap-2 text-[0.68rem] text-[#F1E6D8]/68 sm:grid-cols-3 md:hidden">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className={`shrink-0 rounded-full border px-3 py-2 transition hover:border-[#AA2B3A]/55 hover:text-[#AA2B3A] ${
-                activeSection === link.id
+              className={`rounded-full border px-3 py-2.5 text-center transition hover:border-[#AA2B3A]/55 hover:text-[#AA2B3A] ${
+                (routeActiveSection ?? activeSection) === link.id
                   ? "border-[#AA2B3A]/55 bg-[#AA2B3A]/10 text-[#AA2B3A]"
                   : "border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.035]"
               }`}

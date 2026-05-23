@@ -6,11 +6,13 @@ import { useRef } from "react";
 type InteractivePanelProps = {
   children: ReactNode;
   className?: string;
+  style?: CSSProperties;
 };
 
 export default function InteractivePanel({
   children,
   className = "",
+  style,
 }: InteractivePanelProps) {
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -52,6 +54,7 @@ export default function InteractivePanel({
           "--panel-y": "50%",
           "--panel-rotate-x": "0deg",
           "--panel-rotate-y": "0deg",
+          ...style,
         } as CSSProperties
       }
     >

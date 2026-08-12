@@ -1,5 +1,5 @@
 import { permanentRedirect } from "next/navigation";
 
-export default function ArchivedResearchPage() {
+export default function AcademicNotesPage() {
   permanentRedirect("/research");
 }

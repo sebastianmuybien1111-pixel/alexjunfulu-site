@@ -1,319 +1,95 @@
-import type { Metadata } from "next";
-import BackToHomeLink from "@/components/BackToHomeLink";
-import Link from "next/link";
+import PrintButton from "@/components/PrintButton";
+import { areasOfInterest, methods, siteConfig } from "@/data/site";
+import { createMetadata } from "@/lib/metadata";
 
-const profileSignals = [
-  {
-    label: "Base",
-    value: "Suzhou / XJTLU",
-  },
-  {
-    label: "Current Mode",
-    value: "Undergraduate Research in IR",
-  },
-  {
-    label: "Core Themes",
-    value: "Institutions, strategy, and regional order",
-  },
-];
+export const metadata = createMetadata({
+  title: "Academic CV",
+  description: "Academic curriculum vitae of Alex Junfu Lu, an International Relations undergraduate at Xi’an Jiaotong-Liverpool University.",
+  path: "/cv",
+});
 
-const methods = [
-  "Institutional analysis",
-  "Case-based argument building",
-  "Strategic narrative reading",
-  "Simulation and conference design",
-];
+function CvSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return <section className="cv-section"><h2>{title}</h2><div className="cv-section__content">{children}</div></section>;
+}
 
-const selectedWriting = [
-  {
-    title: "The Myth of Indonesian Neutrality",
-    label: "Working Paper",
-    href: "/research/indonesia-hedging",
-    description:
-      "A study of hedging, selective alignment, and the language of neutrality in Southeast Asian great-power politics.",
-  },
-  {
-    title: "Climate Governance and Institutional Inequality",
-    label: "Research Theme",
-    href: "/research/climate-governance",
-    description:
-      "A justice-oriented project on climate finance asymmetry, vulnerability, and coalition design in global governance.",
-  },
-  {
-    title: "De-Escalatory Institutionalism in the Grey Zone",
-    label: "Research Article",
-    href: "/research/de-escalatory-institutionalism",
-    description:
-      "An argument about how informal regional institutions manage tension where formal authority and enforcement remain thin.",
-  },
-];
+function CvEntry({ title, meta, date, children }: { title: React.ReactNode; meta?: string; date: string; children?: React.ReactNode }) {
+  return <article className="cv-entry"><div><h3>{title}</h3>{meta ? <p className="cv-entry__meta">{meta}</p> : null}</div><span className="cv-entry__date">{date}</span>{children ? <div className="cv-entry__body">{children}</div> : null}</article>;
+}
 
-const leadershipTrack = [
-  {
-    year: "2026",
-    role: "Academic Director",
-    title: "Suzhou International Model United Nations",
-    detail:
-      "Shaping committee architecture, background materials, and delegate-facing academic standards across the conference.",
-  },
-  {
-    year: "2026",
-    role: "Rules Designer",
-    title: "WHO Executive Board Special Session",
-    detail:
-      "Designing procedure, crisis rhythm, and negotiation incentives for a public-health simulation environment.",
-  },
-  {
-    year: "2026",
-    role: "Research Lead",
-    title: "UNODC Background Guide",
-    detail:
-      "Developing issue briefs that connect institutional mandates, security dynamics, and policy trade-offs for conference use.",
-  },
-];
-
-export const metadata: Metadata = {
-  title: "CV | Alex Junfu Lu",
-  description:
-    "Curriculum vitae of Alex Junfu Lu, focused on international relations research, institutional analysis, and conference design.",
-  openGraph: {
-    title: "CV | Alex Junfu Lu",
-    description:
-      "Curriculum vitae focused on research writing, regional analysis, and institutional practice in international relations.",
-    url: "/cv",
-    images: [
-      {
-        url: "/new-profile.jpg",
-        width: 800,
-        height: 600,
-        alt: "Alex Junfu Lu Profile",
-      },
-    ],
-  },
-};
-
-export default function CVPage() {
+export default function CvPage() {
   return (
-    <main className="grid-background noise min-h-screen bg-[#28314E] px-4 py-24 text-[#F1E6D8] sm:px-6 sm:py-32">
-      <div className="mx-auto max-w-6xl">
-        <BackToHomeLink className="mb-12 sm:mb-16" />
-
-        <section className="border-b border-[#F1E6D8]/10 pb-16">
-          <p className="mb-6 text-sm uppercase tracking-[0.25em] text-[#AA2B3A]">
-            Curriculum Vitae
-          </p>
-
-          <h1 className="font-display max-w-[7ch] text-[3.9rem] font-semibold leading-[0.9] tracking-[-0.045em] sm:max-w-none sm:text-7xl md:text-8xl">
-            Alex Junfu Lu
-          </h1>
-
-          <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-            <div>
-              <p className="max-w-2xl text-[1.08rem] font-medium leading-8 tracking-[-0.01em] text-[#F1E6D8]/68 md:text-[1.15rem]">
-                Researching institutional power, Indo-Pacific geopolitics,
-                climate governance, and strategic competition in contemporary
-                international relations.
-              </p>
-
-              <p className="mt-6 max-w-2xl text-[1rem] leading-8 text-[#F1E6D8]/62">
-                My work moves between research writing, regional case analysis,
-                and simulation design. I am especially interested in the ways
-                institutions stabilize conflict, reshape political language, and
-                distribute responsibility across unequal actors.
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-              {profileSignals.map((signal, index) => (
-                <div
-                  key={signal.label}
-                  className="scholar-motion-card scholar-motion-card--soft relative overflow-hidden rounded-[1.6rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-5"
-                  style={{ animationDelay: `${index * 0.25}s` }}
-                >
-                  <div className="scholar-signal-dot" />
-                  <p className="text-xs uppercase tracking-[0.24em] text-[#AA2B3A]">
-                    {signal.label}
-                  </p>
-                  <p className="mt-4 text-sm leading-6 text-[#F1E6D8]/74">
-                    {signal.value}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="grid gap-14 py-14 lg:grid-cols-[1.05fr_0.95fr]">
+    <main id="main-content" className="page-main cv-page">
+      <div className="shell shell--reading">
+        <header className="cv-header">
           <div>
-            <h2 className="font-display mb-8 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-              Education
-            </h2>
-
-            <div className="scholar-motion-card relative overflow-hidden rounded-[1.8rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-6 sm:rounded-[2rem] sm:p-8">
-              <div className="scholar-sweep-line" />
-              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <div>
-                  <h3 className="font-display text-[1.8rem] leading-[1.04] sm:text-3xl">
-                    Xi’an Jiaotong-Liverpool University
-                  </h3>
-                  <p className="mt-3 text-[#F1E6D8]/70">
-                    B.A. in International Relations
-                  </p>
-                  <p className="mt-4 max-w-xl leading-7 text-[#F1E6D8]/60">
-                    Undergraduate training centered on international relations,
-                    institutional politics, global governance, and regional
-                    order.
-                  </p>
-                </div>
-
-                <p className="text-sm uppercase tracking-[0.2em] text-[#F1E6D8]/55">
-                  Suzhou, China
-                </p>
-              </div>
+            <p className="eyebrow">Academic curriculum vitae</p>
+            <h1>{siteConfig.name}</h1>
+            <p className="cv-header__role">International Relations · {siteConfig.institution}</p>
+            <div className="cv-actions">
+              <a className="button" href="/cv/Alex-Junfu-Lu-CV.pdf" download>Download CV (PDF)</a>
+              <PrintButton />
             </div>
           </div>
+          <div className="cv-header__contact"><p>{siteConfig.location}</p><p><a href={`mailto:${siteConfig.academicEmail}`}>{siteConfig.academicEmail}</a></p><p><a href={siteConfig.github} target="_blank" rel="noreferrer">GitHub ↗</a></p></div>
+        </header>
 
-          <div>
-            <h2 className="font-display mb-8 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-              Working Methods
-            </h2>
+        <CvSection title="Research Interests"><ul className="cv-inline-list">{areasOfInterest.map((item) => <li key={item}>{item}</li>)}</ul></CvSection>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              {methods.map((item, index) => (
-                <div
-                  key={item}
-                  className="rounded-[1.5rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] px-5 py-4 text-base text-[#F1E6D8]/80 sm:px-6 sm:py-5 sm:text-lg"
-                  style={{
-                    boxShadow:
-                      index === 0
-                        ? "0 0 0 1px rgba(170,43,58,0.10) inset"
-                        : undefined,
-                  }}
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <CvSection title="Education">
+          <CvEntry title="Xi’an Jiaotong-Liverpool University" meta="B.A. in International Relations · GPA: 3.8/4.0" date="Expected May 2028"><p>Suzhou, China</p></CvEntry>
+          <CvEntry title="National Research University Higher School of Economics (HSE University)" meta="Summer Programme in Political Science and Digital Politics · Score: 9/10" date="Summer 2024"><p>Saint Petersburg, Russia</p></CvEntry>
+        </CvSection>
 
-        <section className="py-14 sm:py-16">
-          <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h2 className="font-display text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-                Selected Research and Writing
-              </h2>
-              <p className="mt-4 max-w-2xl text-[1rem] leading-8 text-[#F1E6D8]/64">
-                A set of ongoing and emerging projects on strategic competition,
-                institutional inequality, and informal regional order.
-              </p>
-            </div>
+        <CvSection title="Research Experience">
+          <CvEntry title="Summer Undergraduate Research Fellow (SURF), XJTLU" meta="Supervisor: Dr. Mohsen Al Attar" date="2026"><p><em>Algorithmic Jurisdictions: Lex Informatica and Legal Heterodoxy in the Chinese Platform Economy</em></p></CvEntry>
+          <CvEntry title="Research Lead, XJTLU Research-Led Learning Symposium" meta="First Prize" date="2025"><p><em>A Global Climate Framework for a Shared Future</em></p></CvEntry>
+          <CvEntry title="Undergraduate Research Assistant / SURF, XJTLU" meta="Supervisor: Dr. Lina Gong" date="2025"><p><em>Accountability and Politics: Measuring ICC Arrest Warrants’ Practical Effects</em></p></CvEntry>
+        </CvSection>
 
-            <Link
-              href="/#research"
-              className="text-sm uppercase tracking-[0.2em] text-[#AA2B3A] transition hover:text-[#F1E6D8]"
-            >
-              View on homepage
-            </Link>
-          </div>
+        <CvSection title="Publication">
+          <CvEntry title={<a href="https://doi.org/10.5220/0014003400004912" target="_blank" rel="noreferrer">Fang, Y., & Lu, J. “Complex Mechanisms in Climate Refugee Management: A Case Study from Bangladesh.” ↗</a>} meta="Proceedings of the 1st International Conference on Innovative Education and Social Development (IESD 2025), pp. 564–570 · SciTePress" date="2025"><p>DOI: 10.5220/0014003400004912</p></CvEntry>
+        </CvSection>
 
-          <div className="grid gap-5 lg:grid-cols-3">
-            {selectedWriting.map((project, index) => (
-              <Link
-                key={project.title}
-                href={project.href}
-                className="scholar-motion-card group relative overflow-hidden rounded-[1.8rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-6 transition duration-500 hover:-translate-y-1 hover:border-[#AA2B3A]/45 sm:rounded-[2rem] sm:p-8"
-                style={{ animationDelay: `${index * 0.3}s` }}
-              >
-                <div className="scholar-signal-dot" />
-                <p className="text-xs uppercase tracking-[0.24em] text-[#AA2B3A]">
-                  {project.label}
-                </p>
-                <h3 className="font-display mt-6 text-3xl leading-[1.02] tracking-[-0.035em] text-[#F1E6D8] sm:mt-7 sm:text-4xl sm:tracking-[-0.04em]">
-                  {project.title}
-                </h3>
-                <p className="mt-5 leading-8 text-[#F1E6D8]/66">
-                  {project.description}
-                </p>
-                <div className="mt-8 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-[#AA2B3A] to-transparent transition duration-500 group-hover:scale-x-100" />
-              </Link>
-            ))}
-          </div>
-        </section>
+        <CvSection title="Selected Papers">
+          <CvEntry title={<em>When Are Regional Organisations More Effective than Global Institutions? Explaining Governance Effectiveness in Complex Transnational Challenges</em>} meta="Selected Research Paper" date="2026" />
+          <CvEntry title={<em>When Security Overrides Efficiency: The Return of Geopolitics in the Global Economy</em>} meta="Selected Research Paper" date="2026" />
+          <CvEntry title={<em>Unequal Skies, Shared Destiny: Bridging the Political and Financial Rift in Global Climate Governance</em>} meta="Working Paper" date="2026" />
+        </CvSection>
 
-        <section className="grid gap-14 py-14 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <h2 className="font-display mb-10 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-              Research Interests
-            </h2>
+        <CvSection title="Awards & Honours">
+          <CvEntry title="Best Paper Award" meta="XJTLU HSS Interdisciplinary Student Conference" date="2026" />
+          <CvEntry title="First Prize" meta="XJTLU Research-Led Learning Symposium" date="2025" />
+          <CvEntry title="Second Place" meta="Student Research Mini-Projects on Internationalization of Education, XJTLU" date="2024" />
+          <CvEntry title="First-Class Scholarship" meta="Xi’an Jiaotong-Liverpool University" date="2024" />
+        </CvSection>
 
-            <div className="grid gap-5 md:grid-cols-2">
-              {[
-                "Global Governance",
-                "Indo-Pacific Geopolitics",
-                "International Political Economy",
-                "Institutional Power",
-                "Climate Governance",
-                "ASEAN and Regionalism",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-[1.6rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] px-6 py-5 text-lg text-[#F1E6D8]/80"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
+        <CvSection title="Academic Leadership">
+          <CvEntry title="Executive Secretary-General" meta="XJTLU Model United Nations Association" date="2026" />
+          <CvEntry title="Academic Director" meta="XJTLU Model United Nations Association" date="2025" />
+          <CvEntry title="Dais Head" meta="Zhejiang University Pan-Yangtze River Delta Region MUN · China Daily MUN · Beijing Foreign Studies University MUN" date="2026" />
+        </CvSection>
 
-          <div>
-            <h2 className="font-display mb-10 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-              Leadership and Practice
-            </h2>
+        <CvSection title="University Service">
+          <CvEntry title="Undergraduate Student Representative" meta="Academic Board" date="Current" />
+          <CvEntry title="Class President" meta="Xi’an Jiaotong-Liverpool University" date="Current" />
+          <CvEntry title="International Relations Student Ambassador" meta="Xi’an Jiaotong-Liverpool University" date="Current" />
+        </CvSection>
 
-            <div className="space-y-5">
-              {leadershipTrack.map((item) => (
-                <article
-                  key={item.title}
-                  className="dossier-track relative overflow-hidden rounded-[1.8rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-6 sm:p-7"
-                >
-                  <div className="flex items-center gap-3 text-xs uppercase tracking-[0.22em]">
-                    <span className="text-[#AA2B3A]">{item.year}</span>
-                    <span className="text-[#F1E6D8]/48">{item.role}</span>
-                  </div>
-                  <h3 className="font-display mt-5 text-[1.8rem] leading-[1.04] tracking-[-0.03em] text-[#F1E6D8] sm:text-3xl">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 leading-8 text-[#F1E6D8]/64">
-                    {item.detail}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <CvSection title="Additional Experience">
+          <CvEntry title="Government Finance Office Intern" meta="Dongguan Finance Bureau, Dalang Branch" date="Jul–Aug 2024" />
+        </CvSection>
 
-        <section className="py-14 sm:py-16">
-          <h2 className="font-display mb-10 text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
-            Languages and Working Environments
-          </h2>
+        <CvSection title="Methods & Technical Skills">
+          <div className="cv-skill-group"><h3>Research methods</h3><p>{methods.join(" · ")}</p></div>
+          <div className="cv-skill-group"><h3>Technical</h3><p>Microsoft Excel · Zotero · LaTeX · Microsoft Office</p></div>
+        </CvSection>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              ["Chinese", "Native"],
-              ["English", "Professional Working Proficiency"],
-              ["Spanish", "Elementary Proficiency"],
-            ].map(([language, level]) => (
-              <div
-                key={language}
-                className="rounded-[1.8rem] border border-[#F1E6D8]/10 bg-[#F1E6D8]/[0.04] p-6"
-              >
-                <h3 className="font-display text-2xl">{language}</h3>
-                <p className="mt-3 text-[#F1E6D8]/70">{level}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <CvSection title="Languages"><ul className="cv-inline-list"><li>Chinese — Native</li><li>English — Advanced</li><li>Spanish — Elementary</li></ul></CvSection>
+
+        <CvSection title="Standardized Tests">
+          <CvEntry title="GRE General Test: 339" meta="Verbal 170 · Quantitative 169 · Analytical Writing 5.0" date="June 2026" />
+          <CvEntry title="IELTS Academic: Overall 7.0" date="July 2023" />
+        </CvSection>
       </div>
     </main>
   );
